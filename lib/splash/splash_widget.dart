@@ -30,7 +30,7 @@ class _SplashWidgetState extends State<SplashWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(
         Duration(
-          milliseconds: 3000,
+          milliseconds: 300,
         ),
       );
 
