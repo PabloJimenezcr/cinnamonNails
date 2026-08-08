@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'services_admin_model.dart';
@@ -57,10 +58,19 @@ class _ServicesAdminWidgetState extends State<ServicesAdminWidget> {
               Row(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Icon(
-                    Icons.spa,
-                    color: Color(0xFFAC2E4D),
-                    size: 20.0,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      context.pushNamed(HomeAdminWidget.routeName);
+                    },
+                    child: Icon(
+                      Icons.spa,
+                      color: Color(0xFFAC2E4D),
+                      size: 20.0,
+                    ),
                   ),
                   Text(
                     'Cinnamon Nails',

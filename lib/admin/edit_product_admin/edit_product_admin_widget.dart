@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'edit_product_admin_model.dart';
@@ -36,20 +37,21 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
     super.initState();
     _model = createModel(context, () => EditProductAdminModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.productNameInputTextController ??=
+        TextEditingController(text: widget.productDocument?.name);
+    _model.productNameInputFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.imageURLInputTextController ??=
+        TextEditingController(text: widget.productDocument?.imageUrl);
+    _model.imageURLInputFocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController();
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.productDescriptionInputTextController ??=
+        TextEditingController(text: widget.productDocument?.description);
+    _model.productDescriptionInputFocusNode ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController();
-    _model.textFieldFocusNode4 ??= FocusNode();
-
-    _model.textController5 ??= TextEditingController();
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.productBrandInputTextController ??=
+        TextEditingController(text: widget.productDocument?.brand);
+    _model.productBrandInputFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -82,8 +84,8 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
               color: Color(0xFF1A1C1C),
               size: 22.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.safePop();
             },
           ),
           title: Text(
@@ -158,8 +160,9 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                               Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController1,
-                                  focusNode: _model.textFieldFocusNode1,
+                                  controller:
+                                      _model.productNameInputTextController,
+                                  focusNode: _model.productNameInputFocusNode,
                                   autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -253,7 +256,8 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                             .fontStyle,
                                       ),
                                   cursorColor: Color(0xFFAC2E4D),
-                                  validator: _model.textController1Validator
+                                  validator: _model
+                                      .productNameInputTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -286,8 +290,9 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                               Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController2,
-                                  focusNode: _model.textFieldFocusNode2,
+                                  controller:
+                                      _model.imageURLInputTextController,
+                                  focusNode: _model.imageURLInputFocusNode,
                                   autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -381,7 +386,8 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                             .fontStyle,
                                       ),
                                   cursorColor: Color(0xFFAC2E4D),
-                                  validator: _model.textController2Validator
+                                  validator: _model
+                                      .imageURLInputTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -414,8 +420,10 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                               Container(
                                 width: double.infinity,
                                 child: TextFormField(
-                                  controller: _model.textController3,
-                                  focusNode: _model.textFieldFocusNode3,
+                                  controller: _model
+                                      .productDescriptionInputTextController,
+                                  focusNode:
+                                      _model.productDescriptionInputFocusNode,
                                   autofocus: false,
                                   obscureText: false,
                                   decoration: InputDecoration(
@@ -505,7 +513,8 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                       ),
                                   maxLines: 5,
                                   cursorColor: Color(0xFFAC2E4D),
-                                  validator: _model.textController3Validator
+                                  validator: _model
+                                      .productDescriptionInputTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -536,15 +545,19 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                     ),
                               ),
                               FlutterFlowDropDown<String>(
-                                controller: _model.dropDownValueController ??=
-                                    FormFieldController<String>(null),
+                                controller:
+                                    _model.categoryDropDownValueController ??=
+                                        FormFieldController<String>(
+                                  _model.categoryDropDownValue ??=
+                                      widget.productDocument?.category,
+                                ),
                                 options: [
                                   'Esmaltes',
                                   'Accesorios',
                                   'Tratamientos'
                                 ],
                                 onChanged: (val) => safeSetState(
-                                    () => _model.dropDownValue = val),
+                                    () => _model.categoryDropDownValue = val),
                                 width: double.infinity,
                                 height: 52.0,
                                 textStyle: FlutterFlowTheme.of(context)
@@ -597,7 +610,7 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Precio',
+                                      'Marca',
                                       style: FlutterFlowTheme.of(context)
                                           .labelLarge
                                           .override(
@@ -621,12 +634,13 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                     Container(
                                       width: double.infinity,
                                       child: TextFormField(
-                                        controller: _model.textController4,
-                                        focusNode: _model.textFieldFocusNode4,
+                                        controller: _model
+                                            .productBrandInputTextController,
+                                        focusNode:
+                                            _model.productBrandInputFocusNode,
                                         autofocus: false,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          hintText: '0.00',
                                           hintStyle: FlutterFlowTheme.of(
                                                   context)
                                               .bodyMedium
@@ -697,7 +711,7 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                               EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 16.0, 16.0, 16.0),
                                           prefixIcon: Icon(
-                                            Icons.attach_money,
+                                            Icons.factory_outlined,
                                             color: Color(0xFF574144),
                                             size: 18.0,
                                           ),
@@ -730,153 +744,7 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                         keyboardType: TextInputType.number,
                                         cursorColor: Color(0xFFAC2E4D),
                                         validator: _model
-                                            .textController4Validator
-                                            .asValidator(context),
-                                      ),
-                                    ),
-                                  ].divide(SizedBox(height: 8.0)),
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Stock',
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            font: GoogleFonts.montserrat(
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelLarge
-                                                      .fontStyle,
-                                            ),
-                                            color: Color(0xFFAC2E4D),
-                                            fontSize: 14.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelLarge
-                                                    .fontStyle,
-                                          ),
-                                    ),
-                                    Container(
-                                      width: double.infinity,
-                                      child: TextFormField(
-                                        controller: _model.textController5,
-                                        focusNode: _model.textFieldFocusNode5,
-                                        autofocus: false,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          hintText: '0',
-                                          hintStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                                color: Color(0xFF8D4B4D),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFFE8D0D3),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFFAC2E4D),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                          filled: true,
-                                          fillColor: Color(0xFFFAF9F8),
-                                          contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 16.0, 16.0, 16.0),
-                                          prefixIcon: Icon(
-                                            Icons.inventory_2_outlined,
-                                            color: Color(0xFF574144),
-                                            size: 18.0,
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.montserrat(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                              color: Color(0xFF1A1C1C),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
-                                        keyboardType: TextInputType.number,
-                                        cursorColor: Color(0xFFAC2E4D),
-                                        validator: _model
-                                            .textController5Validator
+                                            .productBrandInputTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -893,8 +761,31 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      await widget.productDocument!.reference
+                          .update(createProductsRecordData(
+                        name: _model.productNameInputTextController.text,
+                        brand: _model.productBrandInputTextController.text,
+                        description:
+                            _model.productDescriptionInputTextController.text,
+                        imageUrl: _model.imageURLInputTextController.text,
+                        category: _model.categoryDropDownValue,
+                      ));
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Producto del catalogo actualizado exitosamente.',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+
+                      context.pushNamed(ProductosAdminWidget.routeName);
                     },
                     text: 'Guardar Cambios',
                     icon: Icon(
@@ -938,32 +829,90 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(
-                        Icons.delete_outline,
-                        color: Color(0xFFBA1A1A),
-                        size: 18.0,
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 6.0, 0.0),
-                        child: Text(
-                          'Eliminar Producto',
-                          style:
+                      FFButtonWidget(
+                        onPressed: () async {
+                          var confirmDialogResponse = await showDialog<bool>(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    title: Text(
+                                        'Confirmar eliminacion de producto?'),
+                                    content: Text(
+                                        'Esta seguro de que quiere borrar el producto?'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, false),
+                                        child: Text('Cancel'),
+                                      ),
+                                      TextButton(
+                                        onPressed: () => Navigator.pop(
+                                            alertDialogContext, true),
+                                        child: Text('Borrar'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ) ??
+                              false;
+                          if (confirmDialogResponse) {
+                            await widget.productDocument!.reference
+                                .update(createProductsRecordData(
+                              active: false,
+                            ));
+                          } else {
+                            return;
+                          }
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'Producto Eliminado correctamente.',
+                                style: TextStyle(
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 4000),
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).secondary,
+                            ),
+                          );
+                        },
+                        text: 'Eliminar Producto',
+                        icon: Icon(
+                          Icons.delete_outline,
+                          size: 15.0,
+                        ),
+                        options: FFButtonOptions(
+                          height: 40.0,
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 0.0),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     font: GoogleFonts.montserrat(
-                                      fontWeight: FontWeight.w600,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .fontStyle,
                                     ),
                                     color: Color(0xFFBA1A1A),
-                                    fontSize: 14.0,
                                     letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .fontStyle,
                                   ),
+                          elevation: 0.0,
+                          borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
                     ],

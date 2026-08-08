@@ -50,6 +50,11 @@ class ProductsRecord extends FirestoreRecord {
   String get category => _category ?? '';
   bool hasCategory() => _category != null;
 
+  // "imageUrl" field.
+  String? _imageUrl;
+  String get imageUrl => _imageUrl ?? '';
+  bool hasImageUrl() => _imageUrl != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _brand = snapshotData['brand'] as String?;
@@ -58,6 +63,7 @@ class ProductsRecord extends FirestoreRecord {
     _active = snapshotData['active'] as bool?;
     _createdAt = snapshotData['createdAt'] as DateTime?;
     _category = snapshotData['category'] as String?;
+    _imageUrl = snapshotData['imageUrl'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -102,6 +108,7 @@ Map<String, dynamic> createProductsRecordData({
   bool? active,
   DateTime? createdAt,
   String? category,
+  String? imageUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -112,6 +119,7 @@ Map<String, dynamic> createProductsRecordData({
       'active': active,
       'createdAt': createdAt,
       'category': category,
+      'imageUrl': imageUrl,
     }.withoutNulls,
   );
 
@@ -129,7 +137,8 @@ class ProductsRecordDocumentEquality implements Equality<ProductsRecord> {
         e1?.image == e2?.image &&
         e1?.active == e2?.active &&
         e1?.createdAt == e2?.createdAt &&
-        e1?.category == e2?.category;
+        e1?.category == e2?.category &&
+        e1?.imageUrl == e2?.imageUrl;
   }
 
   @override
@@ -140,7 +149,8 @@ class ProductsRecordDocumentEquality implements Equality<ProductsRecord> {
         e?.image,
         e?.active,
         e?.createdAt,
-        e?.category
+        e?.category,
+        e?.imageUrl
       ]);
 
   @override

@@ -77,13 +77,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? TesthomeWidget() : SplashCopyWidget(),
+          appStateNotifier.loggedIn ? HomeAdminWidget() : SplashCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) =>
-              appStateNotifier.loggedIn ? TesthomeWidget() : SplashCopyWidget(),
+          builder: (context, _) => appStateNotifier.loggedIn
+              ? HomeAdminWidget()
+              : SplashCopyWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
@@ -163,6 +164,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: GestionDeClientesWidget.routeName,
           path: GestionDeClientesWidget.routePath,
           builder: (context, params) => GestionDeClientesWidget(),
+        ),
+        FFRoute(
+          name: AddProductAdminWidget.routeName,
+          path: AddProductAdminWidget.routePath,
+          builder: (context, params) => AddProductAdminWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

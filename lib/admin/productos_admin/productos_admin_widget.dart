@@ -139,7 +139,7 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed(ProductosAdminWidget.routeName);
+                      context.pushNamed(AddProductAdminWidget.routeName);
                     },
                     text: 'Añadir Producto',
                     icon: Icon(
@@ -237,8 +237,11 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                                             BorderRadius.circular(16.0),
                                         child: Image.network(
                                           valueOrDefault<String>(
-                                            listViewProductsRecord.image,
-                                            'https://www.commercerev.com/modules/f65f29574d/assets/images/placeholder.png',
+                                            '${valueOrDefault<String>(
+                                              listViewProductsRecord.imageUrl,
+                                              'https://static.vecteezy.com/system/resources/thumbnails/048/910/778/small/default-image-missing-placeholder-free-vector.jpg',
+                                            )}',
+                                            'https://static.vecteezy.com/system/resources/thumbnails/048/910/778/small/default-image-missing-placeholder-free-vector.jpg',
                                           ),
                                           width: double.infinity,
                                           height: 180.0,
@@ -309,28 +312,83 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                                                       ),
                                                     ),
                                                   ),
-                                                  Container(
-                                                    width: 36.0,
-                                                    height: 36.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      shape: BoxShape.circle,
+                                                  FlutterFlowIconButton(
+                                                    borderRadius: 1000.0,
+                                                    buttonSize: 40.0,
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    icon: Icon(
+                                                      Icons.delete_outline,
+                                                      color: Color(0xFFBA1A1A),
+                                                      size: 18.0,
                                                     ),
-                                                    child: Align(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              0.0, 0.0),
-                                                      child: Icon(
-                                                        Icons.delete_outline,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        size: 18.0,
-                                                      ),
-                                                    ),
+                                                    onPressed: () async {
+                                                      var confirmDialogResponse =
+                                                          await showDialog<
+                                                                  bool>(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (alertDialogContext) {
+                                                                  return AlertDialog(
+                                                                    title: Text(
+                                                                        'Confirmar eliminacion de producto?'),
+                                                                    content: Text(
+                                                                        'Esta seguro de que quiere borrar el producto?'),
+                                                                    actions: [
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            false),
+                                                                        child: Text(
+                                                                            'Cancel'),
+                                                                      ),
+                                                                      TextButton(
+                                                                        onPressed: () => Navigator.pop(
+                                                                            alertDialogContext,
+                                                                            true),
+                                                                        child: Text(
+                                                                            'Borrar'),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              ) ??
+                                                              false;
+                                                      if (confirmDialogResponse) {
+                                                        await listViewProductsRecord
+                                                            .reference
+                                                            .update(
+                                                                createProductsRecordData(
+                                                          active: false,
+                                                        ));
+                                                      } else {
+                                                        return;
+                                                      }
+
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                        SnackBar(
+                                                          content: Text(
+                                                            'Producto Eliminado correctamente.',
+                                                            style: TextStyle(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .primaryText,
+                                                            ),
+                                                          ),
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  4000),
+                                                          backgroundColor:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondary,
+                                                        ),
+                                                      );
+                                                    },
                                                   ),
                                                 ].divide(SizedBox(width: 8.0)),
                                               ),

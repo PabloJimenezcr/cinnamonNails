@@ -851,11 +851,24 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
                                     await UsersRecord.collection
                                         .doc(user.uid)
-                                        .update(createUsersRecordData(
-                                          email: '',
-                                          displayName: '',
-                                          phoneNumber: '',
-                                        ));
+                                        .update({
+                                      ...createUsersRecordData(
+                                        email: _model
+                                            .emailInputTextController.text,
+                                        displayName:
+                                            _model.nameInputTextController.text,
+                                        phoneNumber: _model
+                                            .phoneInputTextController.text,
+                                        role: 'cliente',
+                                        active: true,
+                                      ),
+                                      ...mapToFirestore(
+                                        {
+                                          'created_time':
+                                              FieldValue.serverTimestamp(),
+                                        },
+                                      ),
+                                    });
 
                                     await showDialog(
                                       context: context,

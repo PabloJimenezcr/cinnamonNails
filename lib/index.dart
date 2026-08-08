@@ -21,3 +21,5 @@ export '/admin/horarios_personal/horarios_personal_widget.dart'
     show HorariosPersonalWidget;
 export '/admin/gestion_de_clientes/gestion_de_clientes_widget.dart'
     show GestionDeClientesWidget;
+export '/admin/add_product_admin/add_product_admin_widget.dart'
+    show AddProductAdminWidget;

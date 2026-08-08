@@ -1,10 +1,10 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
-import 'edit_product_admin_widget.dart' show EditProductAdminWidget;
+import 'add_product_admin_widget.dart' show AddProductAdminWidget;
 import 'package:flutter/material.dart';
 
-class EditProductAdminModel extends FlutterFlowModel<EditProductAdminWidget> {
+class AddProductAdminModel extends FlutterFlowModel<AddProductAdminWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for ProductNameInput widget.
@@ -21,9 +21,9 @@ class EditProductAdminModel extends FlutterFlowModel<EditProductAdminWidget> {
   TextEditingController? productDescriptionInputTextController;
   String? Function(BuildContext, String?)?
       productDescriptionInputTextControllerValidator;
-  // State field(s) for CategoryDropDown widget.
-  String? categoryDropDownValue;
-  FormFieldController<String>? categoryDropDownValueController;
+  // State field(s) for ProductCategoryDropDown widget.
+  String? productCategoryDropDownValue;
+  FormFieldController<String>? productCategoryDropDownValueController;
   // State field(s) for ProductBrandInput widget.
   FocusNode? productBrandInputFocusNode;
   TextEditingController? productBrandInputTextController;
