@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
@@ -77,18 +76,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomeUserWidget() : SplashWidget(),
+          appStateNotifier.loggedIn ? TesthomeWidget() : SplashCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomeUserWidget() : SplashWidget(),
-        ),
-        FFRoute(
-          name: SplashWidget.routeName,
-          path: SplashWidget.routePath,
-          builder: (context, params) => SplashWidget(),
+              appStateNotifier.loggedIn ? TesthomeWidget() : SplashCopyWidget(),
         ),
         FFRoute(
           name: LoginWidget.routeName,
@@ -104,6 +98,61 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: HomeUserWidget.routeName,
           path: HomeUserWidget.routePath,
           builder: (context, params) => HomeUserWidget(),
+        ),
+        FFRoute(
+          name: SplashCopyWidget.routeName,
+          path: SplashCopyWidget.routePath,
+          builder: (context, params) => SplashCopyWidget(),
+        ),
+        FFRoute(
+          name: TesthomeWidget.routeName,
+          path: TesthomeWidget.routePath,
+          builder: (context, params) => TesthomeWidget(),
+        ),
+        FFRoute(
+          name: HomeAdminWidget.routeName,
+          path: HomeAdminWidget.routePath,
+          builder: (context, params) => HomeAdminWidget(),
+        ),
+        FFRoute(
+          name: ServicesAdminWidget.routeName,
+          path: ServicesAdminWidget.routePath,
+          builder: (context, params) => ServicesAdminWidget(),
+        ),
+        FFRoute(
+          name: EditServiceAdminWidget.routeName,
+          path: EditServiceAdminWidget.routePath,
+          builder: (context, params) => EditServiceAdminWidget(),
+        ),
+        FFRoute(
+          name: ProductosAdminWidget.routeName,
+          path: ProductosAdminWidget.routePath,
+          builder: (context, params) => ProductosAdminWidget(),
+        ),
+        FFRoute(
+          name: AddServiceAdminWidget.routeName,
+          path: AddServiceAdminWidget.routePath,
+          builder: (context, params) => AddServiceAdminWidget(),
+        ),
+        FFRoute(
+          name: EditProductAdminWidget.routeName,
+          path: EditProductAdminWidget.routePath,
+          builder: (context, params) => EditProductAdminWidget(),
+        ),
+        FFRoute(
+          name: CitasAgendadasWidget.routeName,
+          path: CitasAgendadasWidget.routePath,
+          builder: (context, params) => CitasAgendadasWidget(),
+        ),
+        FFRoute(
+          name: HorariosPersonalWidget.routeName,
+          path: HorariosPersonalWidget.routePath,
+          builder: (context, params) => HorariosPersonalWidget(),
+        ),
+        FFRoute(
+          name: GestionDeClientesWidget.routeName,
+          path: GestionDeClientesWidget.routePath,
+          builder: (context, params) => GestionDeClientesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -274,7 +323,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/splash';
+            return '/splashCopy';
           }
           return null;
         },
@@ -292,9 +341,10 @@ class FFRoute {
                   child: SizedBox(
                     width: 50.0,
                     height: 50.0,
-                    child: SpinKitDoubleBounce(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
                     ),
                   ),
                 )

@@ -3,34 +3,34 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'splash_model.dart';
-export 'splash_model.dart';
+import 'splash_copy_model.dart';
+export 'splash_copy_model.dart';
 
-class SplashWidget extends StatefulWidget {
-  const SplashWidget({super.key});
+class SplashCopyWidget extends StatefulWidget {
+  const SplashCopyWidget({super.key});
 
-  static String routeName = 'splash';
-  static String routePath = '/splash';
+  static String routeName = 'splashCopy';
+  static String routePath = '/splashCopy';
 
   @override
-  State<SplashWidget> createState() => _SplashWidgetState();
+  State<SplashCopyWidget> createState() => _SplashCopyWidgetState();
 }
 
-class _SplashWidgetState extends State<SplashWidget> {
-  late SplashModel _model;
+class _SplashCopyWidgetState extends State<SplashCopyWidget> {
+  late SplashCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SplashModel());
+    _model = createModel(context, () => SplashCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(
         Duration(
-          milliseconds: 300,
+          milliseconds: 2000,
         ),
       );
 
@@ -44,6 +44,8 @@ class _SplashWidgetState extends State<SplashWidget> {
         },
       );
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

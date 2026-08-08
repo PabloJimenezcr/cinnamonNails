@@ -35,6 +35,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     _model.passwordInputTextController ??= TextEditingController();
     _model.passwordInputFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -615,9 +617,61 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       return;
                                     }
 
-                                    context.goNamedAuth(
-                                        HomeUserWidget.routeName,
-                                        context.mounted);
+                                    if (valueOrDefault(
+                                            currentUserDocument?.role, '') ==
+                                        'user') {
+                                      context.pushNamedAuth(
+                                        TesthomeWidget.routeName,
+                                        context.mounted,
+                                        extra: <String, dynamic>{
+                                          '__transition_info__': TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                          ),
+                                        },
+                                      );
+                                    } else {
+                                      if (valueOrDefault(
+                                              currentUserDocument?.role, '') ==
+                                          'admin') {
+                                        context.pushNamedAuth(
+                                          HomeAdminWidget.routeName,
+                                          context.mounted,
+                                          extra: <String, dynamic>{
+                                            '__transition_info__':
+                                                TransitionInfo(
+                                              hasTransition: true,
+                                              transitionType:
+                                                  PageTransitionType.fade,
+                                            ),
+                                          },
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text('Error'),
+                                              content:
+                                                  Text('No existe el usuario'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text('Ok'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        await authManager.signOut();
+                                        GoRouter.of(context)
+                                            .clearRedirectLocation();
+                                      }
+                                    }
                                   },
                                   text: 'Ingresar',
                                   options: FFButtonOptions(

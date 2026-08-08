@@ -40,6 +40,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
 
     _model.passwordInputTextController ??= TextEditingController();
     _model.passwordInputFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -875,7 +877,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     GoRouter.of(context)
                                         .clearRedirectLocation();
 
-                                    context.goNamedAuth(SplashWidget.routeName,
+                                    context.goNamedAuth(
+                                        SplashCopyWidget.routeName,
                                         context.mounted);
                                   },
                                   text: 'Registrarse',

@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'splash_widget.dart' show SplashWidget;
+import 'citas_agendadas_widget.dart' show CitasAgendadasWidget;
 import 'package:flutter/material.dart';
 
-class SplashModel extends FlutterFlowModel<SplashWidget> {
+class CitasAgendadasModel extends FlutterFlowModel<CitasAgendadasWidget> {
   @override
   void initState(BuildContext context) {}
 
