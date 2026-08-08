@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -137,7 +138,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: EditProductAdminWidget.routeName,
           path: EditProductAdminWidget.routePath,
-          builder: (context, params) => EditProductAdminWidget(),
+          asyncParams: {
+            'productDocument':
+                getDoc(['products'], ProductsRecord.fromSnapshot),
+          },
+          builder: (context, params) => EditProductAdminWidget(
+            productDocument: params.getParam(
+              'productDocument',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: CitasAgendadasWidget.routeName,

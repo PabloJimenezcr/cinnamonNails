@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,7 +11,13 @@ import 'edit_product_admin_model.dart';
 export 'edit_product_admin_model.dart';
 
 class EditProductAdminWidget extends StatefulWidget {
-  const EditProductAdminWidget({super.key});
+  const EditProductAdminWidget({
+    super.key,
+    required this.productDocument,
+  });
+
+  /// El documento del producto a editar
+  final ProductsRecord? productDocument;
 
   static String routeName = 'editProductAdmin';
   static String routePath = '/editProductAdmin';
