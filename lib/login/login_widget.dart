@@ -636,7 +636,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                               currentUserDocument?.role, '') ==
                                           'admin') {
                                         context.pushNamedAuth(
-                                          HomeAdminWidget.routeName,
+                                          AdminHomeWidget.routeName,
                                           context.mounted,
                                           extra: <String, dynamic>{
                                             '__transition_info__':

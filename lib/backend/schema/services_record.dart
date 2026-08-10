@@ -60,6 +60,11 @@ class ServicesRecord extends FirestoreRecord {
   int get order => _order ?? 0;
   bool hasOrder() => _order != null;
 
+  // "imageUrl" field.
+  String? _imageUrl;
+  String get imageUrl => _imageUrl ?? '';
+  bool hasImageUrl() => _imageUrl != null;
+
   void _initializeFields() {
     _name = snapshotData['name'] as String?;
     _description = snapshotData['description'] as String?;
@@ -70,6 +75,7 @@ class ServicesRecord extends FirestoreRecord {
     _active = snapshotData['active'] as bool?;
     _createdAt = snapshotData['createdAt'] as DateTime?;
     _order = castToType<int>(snapshotData['order']);
+    _imageUrl = snapshotData['imageUrl'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -116,6 +122,7 @@ Map<String, dynamic> createServicesRecordData({
   bool? active,
   DateTime? createdAt,
   int? order,
+  String? imageUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +135,7 @@ Map<String, dynamic> createServicesRecordData({
       'active': active,
       'createdAt': createdAt,
       'order': order,
+      'imageUrl': imageUrl,
     }.withoutNulls,
   );
 
@@ -147,7 +155,8 @@ class ServicesRecordDocumentEquality implements Equality<ServicesRecord> {
         e1?.category == e2?.category &&
         e1?.active == e2?.active &&
         e1?.createdAt == e2?.createdAt &&
-        e1?.order == e2?.order;
+        e1?.order == e2?.order &&
+        e1?.imageUrl == e2?.imageUrl;
   }
 
   @override
@@ -160,7 +169,8 @@ class ServicesRecordDocumentEquality implements Equality<ServicesRecord> {
         e?.category,
         e?.active,
         e?.createdAt,
-        e?.order
+        e?.order,
+        e?.imageUrl
       ]);
 
   @override

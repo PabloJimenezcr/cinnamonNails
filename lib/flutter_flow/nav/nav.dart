@@ -77,13 +77,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomeAdminWidget() : SplashCopyWidget(),
+          appStateNotifier.loggedIn ? AdminHomeWidget() : SplashCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? HomeAdminWidget()
+              ? AdminHomeWidget()
               : SplashCopyWidget(),
         ),
         FFRoute(
@@ -97,9 +97,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RegisterWidget(),
         ),
         FFRoute(
-          name: HomeUserWidget.routeName,
-          path: HomeUserWidget.routePath,
-          builder: (context, params) => HomeUserWidget(),
+          name: UserHomeWidget.routeName,
+          path: UserHomeWidget.routePath,
+          builder: (context, params) => UserHomeWidget(),
         ),
         FFRoute(
           name: SplashCopyWidget.routeName,
@@ -112,38 +112,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TesthomeWidget(),
         ),
         FFRoute(
-          name: HomeAdminWidget.routeName,
-          path: HomeAdminWidget.routePath,
-          builder: (context, params) => HomeAdminWidget(),
+          name: AdminHomeWidget.routeName,
+          path: AdminHomeWidget.routePath,
+          builder: (context, params) => AdminHomeWidget(),
         ),
         FFRoute(
-          name: ServicesAdminWidget.routeName,
-          path: ServicesAdminWidget.routePath,
-          builder: (context, params) => ServicesAdminWidget(),
+          name: AdminServicesWidget.routeName,
+          path: AdminServicesWidget.routePath,
+          builder: (context, params) => AdminServicesWidget(),
         ),
         FFRoute(
-          name: EditServiceAdminWidget.routeName,
-          path: EditServiceAdminWidget.routePath,
-          builder: (context, params) => EditServiceAdminWidget(),
+          name: AdminServicesEditWidget.routeName,
+          path: AdminServicesEditWidget.routePath,
+          builder: (context, params) => AdminServicesEditWidget(),
         ),
         FFRoute(
-          name: ProductosAdminWidget.routeName,
-          path: ProductosAdminWidget.routePath,
-          builder: (context, params) => ProductosAdminWidget(),
+          name: AdminProductosWidget.routeName,
+          path: AdminProductosWidget.routePath,
+          builder: (context, params) => AdminProductosWidget(),
         ),
         FFRoute(
-          name: AddServiceAdminWidget.routeName,
-          path: AddServiceAdminWidget.routePath,
-          builder: (context, params) => AddServiceAdminWidget(),
+          name: AdminServicesAddWidget.routeName,
+          path: AdminServicesAddWidget.routePath,
+          builder: (context, params) => AdminServicesAddWidget(),
         ),
         FFRoute(
-          name: EditProductAdminWidget.routeName,
-          path: EditProductAdminWidget.routePath,
+          name: AdminProductsEditWidget.routeName,
+          path: AdminProductsEditWidget.routePath,
           asyncParams: {
             'productDocument':
                 getDoc(['products'], ProductsRecord.fromSnapshot),
           },
-          builder: (context, params) => EditProductAdminWidget(
+          builder: (context, params) => AdminProductsEditWidget(
             productDocument: params.getParam(
               'productDocument',
               ParamType.Document,
@@ -151,24 +151,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: CitasAgendadasWidget.routeName,
-          path: CitasAgendadasWidget.routePath,
-          builder: (context, params) => CitasAgendadasWidget(),
+          name: AdminAppointmentsWidget.routeName,
+          path: AdminAppointmentsWidget.routePath,
+          builder: (context, params) => AdminAppointmentsWidget(),
         ),
         FFRoute(
-          name: HorariosPersonalWidget.routeName,
-          path: HorariosPersonalWidget.routePath,
-          builder: (context, params) => HorariosPersonalWidget(),
+          name: AdminEmployeeSchedulesWidget.routeName,
+          path: AdminEmployeeSchedulesWidget.routePath,
+          builder: (context, params) => AdminEmployeeSchedulesWidget(),
         ),
         FFRoute(
-          name: GestionDeClientesWidget.routeName,
-          path: GestionDeClientesWidget.routePath,
-          builder: (context, params) => GestionDeClientesWidget(),
+          name: AdminClientsWidget.routeName,
+          path: AdminClientsWidget.routePath,
+          builder: (context, params) => AdminClientsWidget(),
         ),
         FFRoute(
-          name: AddProductAdminWidget.routeName,
-          path: AddProductAdminWidget.routePath,
-          builder: (context, params) => AddProductAdminWidget(),
+          name: AdminProductAddWidget.routeName,
+          path: AdminProductAddWidget.routePath,
+          builder: (context, params) => AdminProductAddWidget(),
         ),
         FFRoute(
           name: ServiceDetailWidget.routeName,

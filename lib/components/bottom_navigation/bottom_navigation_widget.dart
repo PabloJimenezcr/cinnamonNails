@@ -63,7 +63,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             highlightColor: Colors.transparent,
             onTap: () async {
               context.pushNamed(
-                HomeUserWidget.routeName,
+                UserHomeWidget.routeName,
                 extra: <String, dynamic>{
                   '__transition_info__': TransitionInfo(
                     hasTransition: true,

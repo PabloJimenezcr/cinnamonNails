@@ -859,7 +859,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                             _model.nameInputTextController.text,
                                         phoneNumber: _model
                                             .phoneInputTextController.text,
-                                        role: 'cliente',
+                                        role: 'user',
                                         active: true,
                                       ),
                                       ...mapToFirestore(
