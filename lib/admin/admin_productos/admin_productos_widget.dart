@@ -147,7 +147,7 @@ class _AdminProductosWidgetState extends State<AdminProductosWidget> {
                   ),
                   FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed(AdminProductAddWidget.routeName);
+                      context.pushNamed(AdminProductsAddWidget.routeName);
                     },
                     text: 'Añadir Producto',
                     icon: Icon(

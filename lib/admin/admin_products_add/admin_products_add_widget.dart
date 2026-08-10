@@ -8,28 +8,28 @@ import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'admin_product_add_model.dart';
-export 'admin_product_add_model.dart';
+import 'admin_products_add_model.dart';
+export 'admin_products_add_model.dart';
 
-class AdminProductAddWidget extends StatefulWidget {
-  const AdminProductAddWidget({super.key});
+class AdminProductsAddWidget extends StatefulWidget {
+  const AdminProductsAddWidget({super.key});
 
-  static String routeName = 'adminProductAdd';
-  static String routePath = '/adminProductAdd';
+  static String routeName = 'adminProductsAdd';
+  static String routePath = '/adminProductsAdd';
 
   @override
-  State<AdminProductAddWidget> createState() => _AdminProductAddWidgetState();
+  State<AdminProductsAddWidget> createState() => _AdminProductsAddWidgetState();
 }
 
-class _AdminProductAddWidgetState extends State<AdminProductAddWidget> {
-  late AdminProductAddModel _model;
+class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
+  late AdminProductsAddModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => AdminProductAddModel());
+    _model = createModel(context, () => AdminProductsAddModel());
 
     _model.productNameInputTextController ??= TextEditingController();
     _model.productNameInputFocusNode ??= FocusNode();

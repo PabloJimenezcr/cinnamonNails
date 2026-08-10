@@ -1,53 +1,59 @@
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'admin_services_edit_widget.dart' show AdminServicesEditWidget;
 import 'package:flutter/material.dart';
 
 class AdminServicesEditModel extends FlutterFlowModel<AdminServicesEditWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for DropDown widget.
-  String? dropDownValue;
-  FormFieldController<String>? dropDownValueController;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode5;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
+  // State field(s) for ServiceNameInput widget.
+  FocusNode? serviceNameInputFocusNode;
+  TextEditingController? serviceNameInputTextController;
+  String? Function(BuildContext, String?)?
+      serviceNameInputTextControllerValidator;
+  // State field(s) for ServiceImageUrlInput widget.
+  FocusNode? serviceImageUrlInputFocusNode;
+  TextEditingController? serviceImageUrlInputTextController;
+  String? Function(BuildContext, String?)?
+      serviceImageUrlInputTextControllerValidator;
+  // State field(s) for ServiceDescriptionInput widget.
+  FocusNode? serviceDescriptionInputFocusNode;
+  TextEditingController? serviceDescriptionInputTextController;
+  String? Function(BuildContext, String?)?
+      serviceDescriptionInputTextControllerValidator;
+  // State field(s) for ServiceCategoryDropDown widget.
+  String? serviceCategoryDropDownValue;
+  FormFieldController<String>? serviceCategoryDropDownValueController;
+  // State field(s) for ServicePriceInput widget.
+  FocusNode? servicePriceInputFocusNode;
+  TextEditingController? servicePriceInputTextController;
+  String? Function(BuildContext, String?)?
+      servicePriceInputTextControllerValidator;
+  // State field(s) for ServiceDurationInput widget.
+  FocusNode? serviceDurationInputFocusNode;
+  TextEditingController? serviceDurationInputTextController;
+  String? Function(BuildContext, String?)?
+      serviceDurationInputTextControllerValidator;
 
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    serviceNameInputFocusNode?.dispose();
+    serviceNameInputTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    serviceImageUrlInputFocusNode?.dispose();
+    serviceImageUrlInputTextController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    textController3?.dispose();
+    serviceDescriptionInputFocusNode?.dispose();
+    serviceDescriptionInputTextController?.dispose();
 
-    textFieldFocusNode4?.dispose();
-    textController4?.dispose();
+    servicePriceInputFocusNode?.dispose();
+    servicePriceInputTextController?.dispose();
 
-    textFieldFocusNode5?.dispose();
-    textController5?.dispose();
+    serviceDurationInputFocusNode?.dispose();
+    serviceDurationInputTextController?.dispose();
   }
 }

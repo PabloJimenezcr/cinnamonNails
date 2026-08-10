@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'bottom_navigation_widget.dart' show BottomNavigationWidget;
+import '/index.dart';
+import 'home_redirect_widget.dart' show HomeRedirectWidget;
 import 'package:flutter/material.dart';
 
-class BottomNavigationModel extends FlutterFlowModel<BottomNavigationWidget> {
+class HomeRedirectModel extends FlutterFlowModel<HomeRedirectWidget> {
   @override
   void initState(BuildContext context) {}
 

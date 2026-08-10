@@ -1,16 +1,24 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin_services_edit_model.dart';
 export 'admin_services_edit_model.dart';
 
 class AdminServicesEditWidget extends StatefulWidget {
-  const AdminServicesEditWidget({super.key});
+  const AdminServicesEditWidget({
+    super.key,
+    required this.serviceDocument,
+  });
+
+  /// Documento del servicio a editar
+  final ServicesRecord? serviceDocument;
 
   static String routeName = 'adminServicesEdit';
   static String routePath = '/adminServicesEdit';
@@ -30,22 +38,25 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
     super.initState();
     _model = createModel(context, () => AdminServicesEditModel());
 
-    _model.textController1 ??= TextEditingController(text: 'Manicura Rusa');
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.serviceNameInputTextController ??=
+        TextEditingController(text: widget.serviceDocument?.name);
+    _model.serviceNameInputFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController(text: 'Manicura Rusa');
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.serviceImageUrlInputTextController ??=
+        TextEditingController(text: widget.serviceDocument?.imageUrl);
+    _model.serviceImageUrlInputFocusNode ??= FocusNode();
 
-    _model.textController3 ??= TextEditingController(
-        text:
-            'Detailed cuticle work and flawless polish application for long-lasting results.');
-    _model.textFieldFocusNode3 ??= FocusNode();
+    _model.serviceDescriptionInputTextController ??=
+        TextEditingController(text: widget.serviceDocument?.description);
+    _model.serviceDescriptionInputFocusNode ??= FocusNode();
 
-    _model.textController4 ??= TextEditingController(text: '45');
-    _model.textFieldFocusNode4 ??= FocusNode();
+    _model.servicePriceInputTextController ??=
+        TextEditingController(text: widget.serviceDocument?.price.toString());
+    _model.servicePriceInputFocusNode ??= FocusNode();
 
-    _model.textController5 ??= TextEditingController(text: '60');
-    _model.textFieldFocusNode5 ??= FocusNode();
+    _model.serviceDurationInputTextController ??= TextEditingController(
+        text: widget.serviceDocument?.duration.toString());
+    _model.serviceDurationInputFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -80,8 +91,8 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
               color: Color(0xFFAC2E4D),
               size: 24.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.safePop();
             },
           ),
           title: Text(
@@ -161,8 +172,9 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    controller: _model.textController1,
-                                    focusNode: _model.textFieldFocusNode1,
+                                    controller:
+                                        _model.serviceNameInputTextController,
+                                    focusNode: _model.serviceNameInputFocusNode,
                                     autofocus: false,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -258,7 +270,8 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                                   .fontStyle,
                                         ),
                                     cursorColor: Color(0xFFAC2E4D),
-                                    validator: _model.textController1Validator
+                                    validator: _model
+                                        .serviceNameInputTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -293,8 +306,10 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    controller: _model.textController2,
-                                    focusNode: _model.textFieldFocusNode2,
+                                    controller: _model
+                                        .serviceImageUrlInputTextController,
+                                    focusNode:
+                                        _model.serviceImageUrlInputFocusNode,
                                     autofocus: false,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -390,7 +405,8 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                                   .fontStyle,
                                         ),
                                     cursorColor: Color(0xFFAC2E4D),
-                                    validator: _model.textController2Validator
+                                    validator: _model
+                                        .serviceImageUrlInputTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -425,8 +441,10 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    controller: _model.textController3,
-                                    focusNode: _model.textFieldFocusNode3,
+                                    controller: _model
+                                        .serviceDescriptionInputTextController,
+                                    focusNode:
+                                        _model.serviceDescriptionInputFocusNode,
                                     autofocus: false,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -523,7 +541,8 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                         ),
                                     maxLines: 4,
                                     cursorColor: Color(0xFFAC2E4D),
-                                    validator: _model.textController3Validator
+                                    validator: _model
+                                        .serviceDescriptionInputTextControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -556,11 +575,15 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                       ),
                                 ),
                                 FlutterFlowDropDown<String>(
-                                  controller: _model.dropDownValueController ??=
-                                      FormFieldController<String>(null),
+                                  controller: _model
+                                          .serviceCategoryDropDownValueController ??=
+                                      FormFieldController<String>(
+                                    _model.serviceCategoryDropDownValue ??=
+                                        widget.serviceDocument?.category,
+                                  ),
                                   options: ['Manicure', 'Pedicure', 'Facial'],
-                                  onChanged: (val) => safeSetState(
-                                      () => _model.dropDownValue = val),
+                                  onChanged: (val) => safeSetState(() => _model
+                                      .serviceCategoryDropDownValue = val),
                                   width: double.infinity,
                                   height: 56.0,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -642,12 +665,14 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                       Container(
                                         width: double.infinity,
                                         child: TextFormField(
-                                          controller: _model.textController4,
-                                          focusNode: _model.textFieldFocusNode4,
+                                          controller: _model
+                                              .servicePriceInputTextController,
+                                          focusNode:
+                                              _model.servicePriceInputFocusNode,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: '0',
+                                            hintText: '₡',
                                             hintStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .bodyMedium
@@ -752,7 +777,7 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                           keyboardType: TextInputType.number,
                                           cursorColor: Color(0xFFAC2E4D),
                                           validator: _model
-                                              .textController4Validator
+                                              .servicePriceInputTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -792,12 +817,14 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                       Container(
                                         width: double.infinity,
                                         child: TextFormField(
-                                          controller: _model.textController5,
-                                          focusNode: _model.textFieldFocusNode5,
+                                          controller: _model
+                                              .serviceDurationInputTextController,
+                                          focusNode: _model
+                                              .serviceDurationInputFocusNode,
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            hintText: '0',
+                                            hintText: 'En minutos',
                                             hintStyle: FlutterFlowTheme.of(
                                                     context)
                                                 .bodyMedium
@@ -902,7 +929,7 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                                           keyboardType: TextInputType.number,
                                           cursorColor: Color(0xFFAC2E4D),
                                           validator: _model
-                                              .textController5Validator
+                                              .serviceDurationInputTextControllerValidator
                                               .asValidator(context),
                                         ),
                                       ),
@@ -917,8 +944,49 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                     ),
                   ),
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      await widget.serviceDocument!.reference.update({
+                        ...createServicesRecordData(
+                          name: _model.serviceNameInputTextController.text,
+                          description:
+                              _model.serviceDescriptionInputTextController.text,
+                          price: double.tryParse(
+                              _model.servicePriceInputTextController.text),
+                          duration: int.tryParse(
+                              _model.serviceDurationInputTextController.text),
+                          category: _model.serviceCategoryDropDownValue,
+                          imageUrl:
+                              _model.serviceImageUrlInputTextController.text,
+                        ),
+                        ...mapToFirestore(
+                          {
+                            'createdAt': FieldValue.serverTimestamp(),
+                          },
+                        ),
+                      });
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Servicio Actualizado Correctamente.',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+
+                      context.pushNamed(
+                        AdminServicesWidget.routeName,
+                        extra: <String, dynamic>{
+                          '__transition_info__': TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.topToBottom,
+                          ),
+                        },
+                      );
                     },
                     text: 'Guardar Cambios',
                     options: FFButtonOptions(
@@ -951,8 +1019,55 @@ class _AdminServicesEditWidgetState extends State<AdminServicesEditWidget> {
                     ),
                   ),
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      var confirmDialogResponse = await showDialog<bool>(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return AlertDialog(
+                                title:
+                                    Text('Confirmar eliminacion de servicio?'),
+                                content: Text(
+                                    'Esta seguro de que quiere borrar el servicio?'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(
+                                        alertDialogContext, false),
+                                    child: Text('Cancel'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(alertDialogContext, true),
+                                    child: Text('Borrar'),
+                                  ),
+                                ],
+                              );
+                            },
+                          ) ??
+                          false;
+                      if (confirmDialogResponse) {
+                        await widget.serviceDocument!.reference
+                            .update(createServicesRecordData(
+                          active: false,
+                        ));
+                      } else {
+                        return;
+                      }
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Servicio Eliminado correctamente.',
+                            style: TextStyle(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                          ),
+                          duration: Duration(milliseconds: 4000),
+                          backgroundColor:
+                              FlutterFlowTheme.of(context).secondary,
+                        ),
+                      );
+
+                      context.pushNamed(AdminServicesWidget.routeName);
                     },
                     text: 'Eliminar Servicio',
                     options: FFButtonOptions(

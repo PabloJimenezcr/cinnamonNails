@@ -77,13 +77,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? AdminHomeWidget() : SplashCopyWidget(),
+          appStateNotifier.loggedIn ? HomeRedirectWidget() : SplashCopyWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) => appStateNotifier.loggedIn
-              ? AdminHomeWidget()
+              ? HomeRedirectWidget()
               : SplashCopyWidget(),
         ),
         FFRoute(
@@ -124,7 +124,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: AdminServicesEditWidget.routeName,
           path: AdminServicesEditWidget.routePath,
-          builder: (context, params) => AdminServicesEditWidget(),
+          asyncParams: {
+            'serviceDocument':
+                getDoc(['services'], ServicesRecord.fromSnapshot),
+          },
+          builder: (context, params) => AdminServicesEditWidget(
+            serviceDocument: params.getParam(
+              'serviceDocument',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: AdminProductosWidget.routeName,
@@ -166,14 +175,44 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => AdminClientsWidget(),
         ),
         FFRoute(
-          name: AdminProductAddWidget.routeName,
-          path: AdminProductAddWidget.routePath,
-          builder: (context, params) => AdminProductAddWidget(),
+          name: AdminProductsAddWidget.routeName,
+          path: AdminProductsAddWidget.routePath,
+          builder: (context, params) => AdminProductsAddWidget(),
         ),
         FFRoute(
           name: ServiceDetailWidget.routeName,
           path: ServiceDetailWidget.routePath,
           builder: (context, params) => ServiceDetailWidget(),
+        ),
+        FFRoute(
+          name: HomeRedirectWidget.routeName,
+          path: HomeRedirectWidget.routePath,
+          builder: (context, params) => HomeRedirectWidget(),
+        ),
+        FFRoute(
+          name: SelectPersonWidget.routeName,
+          path: SelectPersonWidget.routePath,
+          builder: (context, params) => SelectPersonWidget(),
+        ),
+        FFRoute(
+          name: SelectDateWidget.routeName,
+          path: SelectDateWidget.routePath,
+          builder: (context, params) => SelectDateWidget(),
+        ),
+        FFRoute(
+          name: ConfirmationAppointmentWidget.routeName,
+          path: ConfirmationAppointmentWidget.routePath,
+          builder: (context, params) => ConfirmationAppointmentWidget(),
+        ),
+        FFRoute(
+          name: MessageConfirmationAppointmentWidget.routeName,
+          path: MessageConfirmationAppointmentWidget.routePath,
+          builder: (context, params) => MessageConfirmationAppointmentWidget(),
+        ),
+        FFRoute(
+          name: AppointmentManagementWidget.routeName,
+          path: AppointmentManagementWidget.routePath,
+          builder: (context, params) => AppointmentManagementWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

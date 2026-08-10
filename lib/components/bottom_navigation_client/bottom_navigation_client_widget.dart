@@ -4,11 +4,11 @@ import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'bottom_navigation_model.dart';
-export 'bottom_navigation_model.dart';
+import 'bottom_navigation_client_model.dart';
+export 'bottom_navigation_client_model.dart';
 
-class BottomNavigationWidget extends StatefulWidget {
-  const BottomNavigationWidget({
+class BottomNavigationClientWidget extends StatefulWidget {
+  const BottomNavigationClientWidget({
     super.key,
     required this.selectedIndex,
   });
@@ -16,11 +16,13 @@ class BottomNavigationWidget extends StatefulWidget {
   final int? selectedIndex;
 
   @override
-  State<BottomNavigationWidget> createState() => _BottomNavigationWidgetState();
+  State<BottomNavigationClientWidget> createState() =>
+      _BottomNavigationClientWidgetState();
 }
 
-class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
-  late BottomNavigationModel _model;
+class _BottomNavigationClientWidgetState
+    extends State<BottomNavigationClientWidget> {
+  late BottomNavigationClientModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -31,7 +33,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BottomNavigationModel());
+    _model = createModel(context, () => BottomNavigationClientModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -148,36 +150,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
               ),
               Text(
                 'Mis citas',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.montserrat(
-                        fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                      letterSpacing: 0.0,
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-              ),
-            ],
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                child: Icon(
-                  Icons.shopping_basket_outlined,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
-                ),
-              ),
-              Text(
-                'Tienda',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.montserrat(
                         fontWeight:
