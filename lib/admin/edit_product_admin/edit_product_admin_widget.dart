@@ -878,6 +878,18 @@ class _EditProductAdminWidgetState extends State<EditProductAdminWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                             ),
                           );
+                          if (Navigator.of(context).canPop()) {
+                            context.pop();
+                          }
+                          context.pushNamed(
+                            ProductosAdminWidget.routeName,
+                            extra: <String, dynamic>{
+                              '__transition_info__': TransitionInfo(
+                                hasTransition: true,
+                                transitionType: PageTransitionType.topToBottom,
+                              ),
+                            },
+                          );
                         },
                         text: 'Eliminar Producto',
                         icon: Icon(

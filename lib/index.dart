@@ -23,3 +23,4 @@ export '/admin/gestion_de_clientes/gestion_de_clientes_widget.dart'
     show GestionDeClientesWidget;
 export '/admin/add_product_admin/add_product_admin_widget.dart'
     show AddProductAdminWidget;
+export '/service_detail/service_detail_widget.dart' show ServiceDetailWidget;

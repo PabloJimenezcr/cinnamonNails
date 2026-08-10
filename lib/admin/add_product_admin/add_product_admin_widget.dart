@@ -577,7 +577,10 @@ class _AddProductAdminWidgetState extends State<AddProductAdminWidget> {
                                 FlutterFlowDropDown<String>(
                                   controller: _model
                                           .productCategoryDropDownValueController ??=
-                                      FormFieldController<String>(null),
+                                      FormFieldController<String>(
+                                    _model.productCategoryDropDownValue ??=
+                                        'Esmaltes',
+                                  ),
                                   options: [
                                     'Esmaltes',
                                     'Tratamientos',
@@ -610,7 +613,7 @@ class _AddProductAdminWidgetState extends State<AddProductAdminWidget> {
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                  hintText: 'Manicure',
+                                  hintText: 'Esmaltes',
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: Color(0xFF1A1C1C),
@@ -780,11 +783,10 @@ class _AddProductAdminWidgetState extends State<AddProductAdminWidget> {
                           name: _model.productNameInputTextController.text,
                           description:
                               _model.productDescriptionInputTextController.text,
-                          active: /* NOT RECOMMENDED */
-                              _model.imageURLInputTextController.text == 'true',
+                          active: true,
                           brand: _model.productBrandInputTextController.text,
                           category: _model.productCategoryDropDownValue,
-                          imageUrl: '',
+                          imageUrl: _model.imageURLInputTextController.text,
                         ),
                         ...mapToFirestore(
                           {
@@ -793,7 +795,15 @@ class _AddProductAdminWidgetState extends State<AddProductAdminWidget> {
                         ),
                       });
 
-                      context.pushNamed(ProductosAdminWidget.routeName);
+                      context.pushNamed(
+                        ProductosAdminWidget.routeName,
+                        extra: <String, dynamic>{
+                          '__transition_info__': TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.topToBottom,
+                          ),
+                        },
+                      );
 
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(

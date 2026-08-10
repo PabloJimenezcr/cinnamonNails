@@ -58,12 +58,20 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
             borderRadius: 8.0,
             buttonSize: 44.0,
             icon: Icon(
-              Icons.menu_rounded,
+              Icons.home_outlined,
               color: Color(0xFFAC2E4D),
               size: 24.0,
             ),
-            onPressed: () {
-              print('IconButton pressed ...');
+            onPressed: () async {
+              context.pushNamed(
+                HomeAdminWidget.routeName,
+                extra: <String, dynamic>{
+                  '__transition_info__': TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.topToBottom,
+                  ),
+                },
+              );
             },
           ),
           title: Text(
@@ -178,8 +186,12 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                   ),
                   StreamBuilder<List<ProductsRecord>>(
                     stream: queryProductsRecord(
-                      queryBuilder: (productsRecord) =>
-                          productsRecord.orderBy('createdAt', descending: true),
+                      queryBuilder: (productsRecord) => productsRecord
+                          .where(
+                            'active',
+                            isEqualTo: true,
+                          )
+                          .orderBy('createdAt', descending: true),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -448,7 +460,7 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                                           ),
                                         ),
                                         Text(
-                                          listViewProductsRecord.name,
+                                          listViewProductsRecord.brand,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineSmall
                                               .override(
@@ -470,32 +482,15 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                                                         .fontStyle,
                                               ),
                                         ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              listViewProductsRecord.brand,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .headlineMedium
-                                                  .override(
-                                                    font:
-                                                        GoogleFonts.montserrat(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineMedium
-                                                              .fontStyle,
-                                                    ),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    fontSize: 24.0,
-                                                    letterSpacing: 0.0,
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Text(
+                                            listViewProductsRecord.name,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineMedium
+                                                .override(
+                                                  font: GoogleFonts.montserrat(
                                                     fontWeight: FontWeight.w600,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
@@ -503,106 +498,58 @@ class _ProductosAdminWidgetState extends State<ProductosAdminWidget> {
                                                             .headlineMedium
                                                             .fontStyle,
                                                   ),
-                                            ),
-                                            Expanded(
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.end,
-                                                  children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          child: Text(
-                                                            'Descripción:',
-                                                            textAlign:
-                                                                TextAlign.end,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: Color(
-                                                                      0xFF574144),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                        Align(
-                                                          alignment:
-                                                              AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          child: Text(
-                                                            listViewProductsRecord
-                                                                .description,
-                                                            textAlign:
-                                                                TextAlign.end,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .montserrat(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .normal,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: Color(
-                                                                      0xFF574144),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .normal,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ].divide(
-                                                      SizedBox(width: 6.0)),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  fontSize: 24.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineMedium
+                                                          .fontStyle,
                                                 ),
-                                              ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 8.0, 0.0, 0.0),
+                                            child: Text(
+                                              listViewProductsRecord
+                                                  .description,
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font:
+                                                        GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                          FontWeight.normal,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: Color(0xFF574144),
+                                                    fontSize: 16.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
-                                          ],
+                                          ),
                                         ),
                                       ].divide(SizedBox(height: 8.0)),
                                     ),

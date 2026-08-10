@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -140,147 +141,204 @@ class _GestionDeClientesWidgetState extends State<GestionDeClientesWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            borderRadius: BorderRadius.circular(16.0),
-                            border: Border.all(
-                              color: Color(0xFFFFDAD9),
-                              width: 1.0,
-                            ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Row(
+                      StreamBuilder<List<UsersRecord>>(
+                        stream: queryUsersRecord(
+                          queryBuilder: (usersRecord) => usersRecord
+                              .where(
+                                'role',
+                                isEqualTo: 'cliente',
+                              )
+                              .orderBy('created_time'),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    FlutterFlowTheme.of(context).primary,
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                          List<UsersRecord> listViewUsersRecordList =
+                              snapshot.data!;
+
+                          return ListView.separated(
+                            padding: EdgeInsets.zero,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemCount: listViewUsersRecordList.length,
+                            separatorBuilder: (_, __) => SizedBox(height: 16.0),
+                            itemBuilder: (context, listViewIndex) {
+                              final listViewUsersRecord =
+                                  listViewUsersRecordList[listViewIndex];
+                              return Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    borderRadius: BorderRadius.circular(16.0),
+                                    border: Border.all(
+                                      color: Color(0xFFFFDAD9),
+                                      width: 1.0,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsets.all(16.0),
+                                    child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      'Isabella Vargas',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .headlineSmall
+                                                          .override(
+                                                            font: GoogleFonts
+                                                                .montserrat(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .headlineSmall
+                                                                  .fontStyle,
+                                                            ),
+                                                            color: Color(
+                                                                0xFF1A1C1C),
+                                                            fontSize: 24.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .headlineSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(height: 6.0)),
+                                                ),
+                                              ].divide(SizedBox(width: 12.0)),
+                                            ),
+                                          ],
+                                        ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              'Isabella Vargas',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .headlineSmall
-                                                  .override(
-                                                    font:
-                                                        GoogleFonts.montserrat(
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .headlineSmall
-                                                              .fontStyle,
-                                                    ),
-                                                    color: Color(0xFF1A1C1C),
-                                                    fontSize: 24.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .headlineSmall
-                                                            .fontStyle,
-                                                  ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Icon(
+                                                  Icons.mail_outline,
+                                                  color: Color(0xFF574144),
+                                                  size: 22.0,
+                                                ),
+                                                Text(
+                                                  'isabella@email.com',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .montserrat(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF1A1C1C),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
+                                              ].divide(SizedBox(width: 12.0)),
                                             ),
-                                          ].divide(SizedBox(height: 6.0)),
-                                        ),
-                                      ].divide(SizedBox(width: 12.0)),
-                                    ),
-                                  ],
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.mail_outline,
-                                          color: Color(0xFF574144),
-                                          size: 22.0,
-                                        ),
-                                        Text(
-                                          'isabella@email.com',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight: FontWeight.normal,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Icon(
+                                                  Icons.phone_outlined,
+                                                  color: Color(0xFF574144),
+                                                  size: 22.0,
                                                 ),
-                                                color: Color(0xFF1A1C1C),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ].divide(SizedBox(width: 12.0)),
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Icon(
-                                          Icons.phone_outlined,
-                                          color: Color(0xFF574144),
-                                          size: 22.0,
-                                        ),
-                                        Text(
-                                          '+34 600 000 000',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.montserrat(
-                                                  fontWeight: FontWeight.normal,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
+                                                Text(
+                                                  '+34 600 000 000',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts
+                                                            .montserrat(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        color:
+                                                            Color(0xFF1A1C1C),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
                                                 ),
-                                                color: Color(0xFF1A1C1C),
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.normal,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
+                                              ].divide(SizedBox(width: 12.0)),
+                                            ),
+                                          ].divide(SizedBox(height: 12.0)),
                                         ),
-                                      ].divide(SizedBox(width: 12.0)),
+                                      ].divide(SizedBox(height: 16.0)),
                                     ),
-                                  ].divide(SizedBox(height: 12.0)),
+                                  ),
                                 ),
-                              ].divide(SizedBox(height: 16.0)),
-                            ),
-                          ),
-                        ),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ].divide(SizedBox(height: 12.0)),
                   ),

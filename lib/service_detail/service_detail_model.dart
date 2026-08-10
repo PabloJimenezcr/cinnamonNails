@@ -1,9 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'citas_agendadas_widget.dart' show CitasAgendadasWidget;
+import 'service_detail_widget.dart' show ServiceDetailWidget;
 import 'package:flutter/material.dart';
 
-class CitasAgendadasModel extends FlutterFlowModel<CitasAgendadasWidget> {
+class ServiceDetailModel extends FlutterFlowModel<ServiceDetailWidget> {
   @override
   void initState(BuildContext context) {}
 

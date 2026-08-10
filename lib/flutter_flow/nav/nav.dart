@@ -169,6 +169,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: AddProductAdminWidget.routeName,
           path: AddProductAdminWidget.routePath,
           builder: (context, params) => AddProductAdminWidget(),
+        ),
+        FFRoute(
+          name: ServiceDetailWidget.routeName,
+          path: ServiceDetailWidget.routePath,
+          builder: (context, params) => ServiceDetailWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

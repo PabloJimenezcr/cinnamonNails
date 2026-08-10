@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'citas_agendadas_model.dart';
@@ -50,17 +51,17 @@ class _CitasAgendadasWidgetState extends State<CitasAgendadasWidget> {
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
           leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderRadius: 8.0,
-              buttonSize: 44.0,
+              buttonSize: 179.7,
               icon: Icon(
-                Icons.menu_rounded,
+                Icons.home_outlined,
                 color: Color(0xFF1A1C1C),
                 size: 24.0,
               ),
-              onPressed: () {
-                print('IconButton pressed ...');
+              onPressed: () async {
+                context.pushNamed(HomeAdminWidget.routeName);
               },
             ),
           ),
@@ -150,332 +151,345 @@ class _CitasAgendadasWidgetState extends State<CitasAgendadasWidget> {
                       ],
                     ),
                   ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: 70.0,
-                        height: 90.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFAF9F8),
-                          borderRadius: BorderRadius.circular(12.0),
-                          border: Border.all(
-                            color: Color(0xFFAC2E4D),
-                            width: 1.0,
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 70.0,
+                          height: 90.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFAF9F8),
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFFAC2E4D),
+                              width: 1.0,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'LUN',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'LUN',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                              Text(
-                                '12',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                                ),
+                                Text(
+                                  '12',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 24.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ].divide(SizedBox(height: 4.0)),
+                                ),
+                              ].divide(SizedBox(height: 4.0)),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 70.0,
-                        height: 90.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
-                          borderRadius: BorderRadius.circular(12.0),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'MAR',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                        Container(
+                          width: 70.0,
+                          height: 90.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context).primary,
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'MAR',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                              Text(
-                                '13',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                                ),
+                                Text(
+                                  '13',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.bold,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                        fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .fontStyle,
                                       ),
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                      fontSize: 24.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.bold,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ].divide(SizedBox(height: 4.0)),
+                                ),
+                              ].divide(SizedBox(height: 4.0)),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 70.0,
-                        height: 90.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFAF9F8),
-                          borderRadius: BorderRadius.circular(12.0),
-                          border: Border.all(
-                            color: Color(0xFFAC2E4D),
-                            width: 1.0,
+                        Container(
+                          width: 70.0,
+                          height: 90.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFAF9F8),
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFFAC2E4D),
+                              width: 1.0,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'MIÉ',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'MIÉ',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                              Text(
-                                '14',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                                ),
+                                Text(
+                                  '14',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 24.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ].divide(SizedBox(height: 4.0)),
+                                ),
+                              ].divide(SizedBox(height: 4.0)),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 70.0,
-                        height: 90.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFAF9F8),
-                          borderRadius: BorderRadius.circular(12.0),
-                          border: Border.all(
-                            color: Color(0xFFAC2E4D),
-                            width: 1.0,
+                        Container(
+                          width: 70.0,
+                          height: 90.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFAF9F8),
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFFAC2E4D),
+                              width: 1.0,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'JUE',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'JUE',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                              Text(
-                                '15',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                                ),
+                                Text(
+                                  '15',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 24.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ].divide(SizedBox(height: 4.0)),
+                                ),
+                              ].divide(SizedBox(height: 4.0)),
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        width: 70.0,
-                        height: 90.0,
-                        decoration: BoxDecoration(
-                          color: Color(0xFFFAF9F8),
-                          borderRadius: BorderRadius.circular(12.0),
-                          border: Border.all(
-                            color: Color(0xFFAC2E4D),
-                            width: 1.0,
+                        Container(
+                          width: 70.0,
+                          height: 90.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFAF9F8),
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(
+                              color: Color(0xFFAC2E4D),
+                              width: 1.0,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'VIE',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                          child: Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'VIE',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .labelMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 14.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                              Text(
-                                '16',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      font: GoogleFonts.montserrat(
+                                ),
+                                Text(
+                                  '16',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w600,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .headlineMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        fontSize: 24.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         fontStyle: FlutterFlowTheme.of(context)
                                             .headlineMedium
                                             .fontStyle,
                                       ),
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      fontSize: 24.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .headlineMedium
-                                          .fontStyle,
-                                    ),
-                              ),
-                            ].divide(SizedBox(height: 4.0)),
+                                ),
+                              ].divide(SizedBox(height: 4.0)),
+                            ),
                           ),
                         ),
-                      ),
-                    ].divide(SizedBox(width: 8.0)),
+                      ].divide(SizedBox(width: 8.0)),
+                    ),
                   ),
                   Container(
                     width: double.infinity,
