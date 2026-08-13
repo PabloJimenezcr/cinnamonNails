@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin_products_edit_model.dart';
 export 'admin_products_edit_model.dart';
@@ -75,38 +76,38 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
         key: scaffoldKey,
         backgroundColor: Color(0xFFF7F7F5),
         appBar: AppBar(
-          backgroundColor: Color(0xFFF7F7F5),
+          backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderRadius: 22.0,
+            borderRadius: 8.0,
             buttonSize: 44.0,
-            icon: Icon(
-              Icons.arrow_back,
-              color: Color(0xFF1A1C1C),
-              size: 22.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
             onPressed: () async {
               context.safePop();
             },
           ),
           title: Text(
-            'Editar Producto',
-            style: FlutterFlowTheme.of(context).headlineLarge.override(
+            'Editar producto',
+            textAlign: TextAlign.center,
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
                     fontStyle:
-                        FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
-                  color: Color(0xFFAC2E4D),
-                  fontSize: 28.0,
+                  color: FlutterFlowTheme.of(context).primary,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
-                      FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(
@@ -149,7 +150,8 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                             .labelLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFAC2E4D),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -227,11 +229,6 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 16.0, 16.0),
-                                    prefixIcon: Icon(
-                                      Icons.label_outline,
-                                      color: Color(0xFF8D4B4D),
-                                      size: 20.0,
-                                    ),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -279,7 +276,8 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                             .labelLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFAC2E4D),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -357,11 +355,6 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                     contentPadding:
                                         EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 16.0, 16.0),
-                                    prefixIcon: Icon(
-                                      Icons.label_outline,
-                                      color: Color(0xFF8D4B4D),
-                                      size: 20.0,
-                                    ),
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -409,7 +402,8 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                             .labelLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFAC2E4D),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -536,7 +530,8 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                             .labelLarge
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFFAC2E4D),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       fontSize: 14.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.w600,
@@ -622,7 +617,8 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                                       .labelLarge
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFFAC2E4D),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
@@ -711,11 +707,6 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                           contentPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 16.0, 16.0, 16.0),
-                                          prefixIcon: Icon(
-                                            Icons.factory_outlined,
-                                            color: Color(0xFF574144),
-                                            size: 18.0,
-                                          ),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -789,19 +780,13 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                       context.pushNamed(AdminProductosWidget.routeName);
                     },
                     text: 'Guardar Cambios',
-                    icon: Icon(
-                      Icons.save_outlined,
-                      size: 18.0,
-                    ),
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 56.0,
                       padding: EdgeInsets.all(8.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconColor:
-                          FlutterFlowTheme.of(context).secondaryBackground,
-                      color: Color(0xFFAC2E4D),
+                      color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 font: GoogleFonts.montserrat(
@@ -893,18 +878,13 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                           );
                         },
                         text: 'Eliminar Producto',
-                        icon: Icon(
-                          Icons.delete_outline,
-                          size: 15.0,
-                        ),
                         options: FFButtonOptions(
                           height: 40.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: Color(0x00FFFFFF),
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     font: GoogleFonts.montserrat(
@@ -915,7 +895,7 @@ class _AdminProductsEditWidgetState extends State<AdminProductsEditWidget> {
                                           .titleSmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFFBA1A1A),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall

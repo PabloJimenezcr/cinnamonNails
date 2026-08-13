@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'appointment_management_model.dart';
 export 'appointment_management_model.dart';
@@ -52,31 +53,28 @@ class _AppointmentManagementWidgetState
         appBar: AppBar(
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderRadius: 8.0,
-              buttonSize: 44.0,
-              icon: Icon(
-                Icons.menu_rounded,
-                color: Color(0xFF1A1C1C),
-                size: 24.0,
-              ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
+          leading: FlutterFlowIconButton(
+            borderRadius: 8.0,
+            buttonSize: 44.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
+            onPressed: () async {
+              context.safePop();
+            },
           ),
           title: Text(
-            'Cinnamon Nails',
+            'Mis citas',
+            textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
-                  color: Color(0xFFAC2E4D),
-                  fontSize: 28.0,
+                  color: FlutterFlowTheme.of(context).primary,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -94,48 +92,6 @@ class _AppointmentManagementWidgetState
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Mis Citas',
-                      style: FlutterFlowTheme.of(context).displaySmall.override(
-                            font: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .fontStyle,
-                            ),
-                            color: Color(0xFF1A1C1C),
-                            fontSize: 28.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w600,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .displaySmall
-                                .fontStyle,
-                          ),
-                    ),
-                    Text(
-                      'Gestiona tus próximas visitas al salón.',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            font: GoogleFonts.montserrat(
-                              fontWeight: FontWeight.normal,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                            color: Color(0xFF574144),
-                            fontSize: 16.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.normal,
-                            fontStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .fontStyle,
-                          ),
-                    ),
-                  ].divide(SizedBox(height: 8.0)),
-                ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -267,7 +223,8 @@ class _AppointmentManagementWidgetState
                                     children: [
                                       Icon(
                                         Icons.person_outline,
-                                        color: Color(0xFF574144),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         size: 18.0,
                                       ),
                                       Text(
@@ -318,7 +275,8 @@ class _AppointmentManagementWidgetState
                                                       .labelMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFFAC2E4D),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
@@ -459,7 +417,9 @@ class _AppointmentManagementWidgetState
                                           children: [
                                             Icon(
                                               Icons.access_time,
-                                              color: Color(0xFF574144),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                               size: 16.0,
                                             ),
                                             Text(
@@ -478,7 +438,9 @@ class _AppointmentManagementWidgetState
                                                               .bodyMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: Color(0xFF574144),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
                                                     fontSize: 14.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight:
@@ -531,7 +493,8 @@ class _AppointmentManagementWidgetState
                                                     .titleSmall
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFFAC2E4D),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -542,7 +505,8 @@ class _AppointmentManagementWidgetState
                                         ),
                                     elevation: 0.0,
                                     borderSide: BorderSide(
-                                      color: Color(0xFFAC2E4D),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       width: 2.0,
                                     ),
                                     borderRadius: BorderRadius.circular(30.0),
@@ -572,7 +536,8 @@ class _AppointmentManagementWidgetState
                                                     .titleSmall
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF8D4B4D),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,

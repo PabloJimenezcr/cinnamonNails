@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin_services_add_model.dart';
 export 'admin_services_add_model.dart';
@@ -70,14 +71,12 @@ class _AdminServicesAddWidgetState extends State<AdminServicesAddWidget> {
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 22.0,
-            borderWidth: 0.0,
+            borderRadius: 8.0,
             buttonSize: 44.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Color(0xFFAC2E4D),
-              size: 24.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
             onPressed: () async {
               context.safePop();
@@ -85,6 +84,7 @@ class _AdminServicesAddWidgetState extends State<AdminServicesAddWidget> {
           ),
           title: Text(
             'Agregar servicio',
+            textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
@@ -92,7 +92,6 @@ class _AdminServicesAddWidgetState extends State<AdminServicesAddWidget> {
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: FlutterFlowTheme.of(context).primary,
-                  fontSize: 28.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -100,7 +99,7 @@ class _AdminServicesAddWidgetState extends State<AdminServicesAddWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(

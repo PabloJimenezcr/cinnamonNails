@@ -1,8 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin_appointments_model.dart';
 export 'admin_appointments_model.dart';
@@ -51,34 +53,32 @@ class _AdminAppointmentsWidgetState extends State<AdminAppointmentsWidget> {
         appBar: AppBar(
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderRadius: 8.0,
-              buttonSize: 179.7,
-              icon: Icon(
-                Icons.home_outlined,
-                color: Color(0xFF1A1C1C),
-                size: 24.0,
-              ),
-              onPressed: () async {
-                context.pushNamed(AdminHomeWidget.routeName);
-              },
+          leading: FlutterFlowIconButton(
+            borderRadius: 8.0,
+            buttonSize: 44.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
+            onPressed: () async {
+              context.safePop();
+            },
           ),
           title: Text(
             'Agenda',
-            style: FlutterFlowTheme.of(context).headlineLarge.override(
+            textAlign: TextAlign.center,
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
                     fontStyle:
-                        FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: FlutterFlowTheme.of(context).primary,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
-                      FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -128,7 +128,7 @@ class _AdminAppointmentsWidgetState extends State<AdminAppointmentsWidget> {
                               buttonSize: 36.0,
                               icon: Icon(
                                 Icons.chevron_left_outlined,
-                                color: Color(0xFF574144),
+                                color: FlutterFlowTheme.of(context).primary,
                                 size: 22.0,
                               ),
                               onPressed: () {
@@ -140,7 +140,7 @@ class _AdminAppointmentsWidgetState extends State<AdminAppointmentsWidget> {
                               buttonSize: 36.0,
                               icon: Icon(
                                 Icons.chevron_right_outlined,
-                                color: Color(0xFF574144),
+                                color: FlutterFlowTheme.of(context).primary,
                                 size: 22.0,
                               ),
                               onPressed: () {
@@ -1216,6 +1216,262 @@ class _AdminAppointmentsWidgetState extends State<AdminAppointmentsWidget> {
                                   ),
                                 ].divide(SizedBox(height: 8.0)),
                               ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 70.0),
+                    child: Container(
+                      width: double.infinity,
+                      height: MediaQuery.sizeOf(context).height * 0.1,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        borderRadius: BorderRadius.circular(16.0),
+                      ),
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                AdminHomeWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
+                                },
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Icon(
+                                    Icons.house_outlined,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Inicio',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                AdminAppointmentsWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
+                                },
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Icon(
+                                    Icons.calendar_month_outlined,
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Agenda',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                AdminServicesWidget.routeName,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
+                                },
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Icon(
+                                    Icons.spa_outlined,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Servicios',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              GoRouter.of(context).prepareAuthEvent();
+                              await authManager.signOut();
+                              GoRouter.of(context).clearRedirectLocation();
+
+                              context.pushNamedAuth(
+                                LoginWidget.routeName,
+                                context.mounted,
+                                extra: <String, dynamic>{
+                                  '__transition_info__': TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                  ),
+                                },
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 5.0),
+                                  child: Icon(
+                                    Icons.login_outlined,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Cerrar sesión',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.montserrat(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

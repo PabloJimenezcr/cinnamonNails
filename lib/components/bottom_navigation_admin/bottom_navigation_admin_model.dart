@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import '/index.dart';
-import 'service_detail_widget.dart' show ServiceDetailWidget;
+import 'bottom_navigation_admin_widget.dart' show BottomNavigationAdminWidget;
 import 'package:flutter/material.dart';
 
-class ServiceDetailModel extends FlutterFlowModel<ServiceDetailWidget> {
+class BottomNavigationAdminModel
+    extends FlutterFlowModel<BottomNavigationAdminWidget> {
   @override
   void initState(BuildContext context) {}
 

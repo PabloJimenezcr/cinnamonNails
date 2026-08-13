@@ -2,7 +2,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'select_person_model.dart';
 export 'select_person_model.dart';
@@ -50,33 +52,28 @@ class _SelectPersonWidgetState extends State<SelectPersonWidget> {
         appBar: AppBar(
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderColor: Colors.transparent,
-              borderRadius: 22.0,
-              borderWidth: 0.0,
-              buttonSize: 44.0,
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Color(0xFF1A1C1C),
-                size: 24.0,
-              ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
+          leading: FlutterFlowIconButton(
+            borderRadius: 8.0,
+            buttonSize: 44.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
+            onPressed: () async {
+              context.safePop();
+            },
           ),
           title: Text(
-            'Cinnamon Nails',
+            'Personal',
+            textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
                     fontStyle:
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
-                  color: Color(0xFFAC2E4D),
-                  fontSize: 28.0,
+                  color: FlutterFlowTheme.of(context).primary,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -117,7 +114,7 @@ class _SelectPersonWidgetState extends State<SelectPersonWidget> {
                                           .fontStyle,
                                     ),
                                     color: Color(0xFF1A1C1C),
-                                    fontSize: 48.0,
+                                    fontSize: 30.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
@@ -137,7 +134,8 @@ class _SelectPersonWidgetState extends State<SelectPersonWidget> {
                                           .bodyLarge
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF574144),
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     fontSize: 18.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
@@ -383,8 +381,16 @@ class _SelectPersonWidgetState extends State<SelectPersonWidget> {
                 child: Container(
                   width: double.infinity,
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      context.pushNamed(
+                        SelectDateWidget.routeName,
+                        extra: <String, dynamic>{
+                          '__transition_info__': TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.fade,
+                          ),
+                        },
+                      );
                     },
                     text: 'Continuar',
                     options: FFButtonOptions(

@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin_products_add_model.dart';
 export 'admin_products_add_model.dart';
@@ -67,21 +68,20 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
-            borderColor: Colors.transparent,
-            borderRadius: 22.0,
-            borderWidth: 0.0,
+            borderRadius: 8.0,
             buttonSize: 44.0,
-            icon: Icon(
-              Icons.arrow_back_rounded,
-              color: Color(0xFFAC2E4D),
-              size: 24.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
             onPressed: () async {
               context.safePop();
             },
           ),
           title: Text(
-            'Agregar Producto',
+            'Agregar producto',
+            textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   font: GoogleFonts.montserrat(
                     fontWeight: FontWeight.w600,
@@ -89,7 +89,6 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                         FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
                   color: FlutterFlowTheme.of(context).primary,
-                  fontSize: 28.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                   fontStyle:
@@ -97,7 +96,7 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                 ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(
@@ -177,7 +176,8 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: Color(0xFF8D4B4D),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
                                             letterSpacing: 0.0,
                                             fontWeight:
                                                 FlutterFlowTheme.of(context)
@@ -198,7 +198,8 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                          color: Color(0xFFAC2E4D),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           width: 1.0,
                                         ),
                                         borderRadius:
@@ -228,10 +229,6 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 16.0, 16.0),
-                                      prefixIcon: Icon(
-                                        Icons.label_outline,
-                                        color: Color(0xFF8D4B4D),
-                                      ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
@@ -246,7 +243,8 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF1A1C1C),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight:
@@ -318,7 +316,9 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                color: Color(0xFF8D4B4D),
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
                                                 letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
@@ -339,7 +339,9 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                           ),
                                           focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide(
-                                              color: Color(0xFFAC2E4D),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                               width: 1.0,
                                             ),
                                             borderRadius:
@@ -373,10 +375,6 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                           contentPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 16.0, 16.0, 16.0),
-                                          prefixIcon: Icon(
-                                            Icons.label_outline,
-                                            color: Color(0xFF8D4B4D),
-                                          ),
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -733,9 +731,6 @@ class _AdminProductsAddWidgetState extends State<AdminProductsAddWidget> {
                                       contentPadding:
                                           EdgeInsetsDirectional.fromSTEB(
                                               16.0, 16.0, 16.0, 16.0),
-                                      prefixIcon: Icon(
-                                        Icons.factory_outlined,
-                                      ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium

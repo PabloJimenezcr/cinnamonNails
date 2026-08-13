@@ -1,9 +1,12 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'admin_services_model.dart';
 export 'admin_services_model.dart';
@@ -52,71 +55,36 @@ class _AdminServicesWidgetState extends State<AdminServicesWidget> {
         appBar: AppBar(
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
-          title: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed(
-                    AdminHomeWidget.routeName,
-                    extra: <String, dynamic>{
-                      '__transition_info__': TransitionInfo(
-                        hasTransition: true,
-                        transitionType: PageTransitionType.bottomToTop,
-                      ),
-                    },
-                  );
-                },
-                child: Icon(
-                  Icons.home_outlined,
-                  color: Color(0xFFAC2E4D),
-                  size: 28.0,
+          leading: FlutterFlowIconButton(
+            borderRadius: 8.0,
+            buttonSize: 44.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
+            ),
+            onPressed: () async {
+              context.safePop();
+            },
+          ),
+          title: Text(
+            'Servicios',
+            textAlign: TextAlign.center,
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  font: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
+                  color: FlutterFlowTheme.of(context).primary,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(1.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
-                      child: Icon(
-                        Icons.spa_outlined,
-                        color: Color(0xFFAC2E4D),
-                        size: 28.0,
-                      ),
-                    ),
-                    Text(
-                      'Cinnamon Nails',
-                      style:
-                          FlutterFlowTheme.of(context).headlineMedium.override(
-                                font: GoogleFonts.montserrat(
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .headlineMedium
-                                      .fontStyle,
-                                ),
-                                color: Color(0xFFAC2E4D),
-                                fontSize: 28.0,
-                                letterSpacing: 0.0,
-                                fontWeight: FontWeight.bold,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontStyle,
-                              ),
-                    ),
-                  ].divide(SizedBox(width: 8.0)),
-                ),
-              ),
-            ].divide(SizedBox(width: 8.0)),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(
@@ -126,57 +94,6 @@ class _AdminServicesWidgetState extends State<AdminServicesWidget> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        'Services',
-                        style:
-                            FlutterFlowTheme.of(context).displaySmall.override(
-                                  font: GoogleFonts.montserrat(
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .fontStyle,
-                                  ),
-                                  color: FlutterFlowTheme.of(context).primary,
-                                  fontSize: 48.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .displaySmall
-                                      .fontStyle,
-                                ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                      child: Text(
-                        'Administre los servicios que el salon ofrece.',
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.normal,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
-                              color: Color(0xFF574144),
-                              fontSize: 18.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
-                      ),
-                    ),
-                  ].divide(SizedBox(height: 8.0)),
-                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: FFButtonWidget(
@@ -192,13 +109,9 @@ class _AdminServicesWidgetState extends State<AdminServicesWidget> {
                       );
                     },
                     text: 'Añadir servicio',
-                    icon: Icon(
-                      Icons.add,
-                      size: 15.0,
-                    ),
                     options: FFButtonOptions(
                       width: double.infinity,
-                      height: 50.0,
+                      height: 56.0,
                       padding: EdgeInsets.all(8.0),
                       iconAlignment: IconAlignment.end,
                       iconPadding:
@@ -489,8 +402,7 @@ class _AdminServicesWidgetState extends State<AdminServicesWidget> {
                                                           font: GoogleFonts
                                                               .montserrat(
                                                             fontWeight:
-                                                                FontWeight
-                                                                    .normal,
+                                                                FontWeight.w500,
                                                             fontStyle:
                                                                 FlutterFlowTheme.of(
                                                                         context)
@@ -503,7 +415,7 @@ class _AdminServicesWidgetState extends State<AdminServicesWidget> {
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
-                                                              FontWeight.normal,
+                                                              FontWeight.w500,
                                                           fontStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -652,6 +564,238 @@ class _AdminServicesWidgetState extends State<AdminServicesWidget> {
                       ),
                     ),
                   ].divide(SizedBox(height: 16.0)),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 70.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: MediaQuery.sizeOf(context).height * 0.1,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              AdminHomeWidget.routeName,
+                              extra: <String, dynamic>{
+                                '__transition_info__': TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                ),
+                              },
+                            );
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: Icon(
+                                  Icons.house_outlined,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                              Text(
+                                'Inicio',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context
+                                .pushNamed(AdminAppointmentsWidget.routeName);
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: Icon(
+                                  Icons.calendar_month_outlined,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                              Text(
+                                'Agenda',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              AdminServicesWidget.routeName,
+                              extra: <String, dynamic>{
+                                '__transition_info__': TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                ),
+                              },
+                            );
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: Icon(
+                                  Icons.spa_outlined,
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 24.0,
+                                ),
+                              ),
+                              Text(
+                                'Servicios',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            context.pushNamedAuth(
+                                LoginWidget.routeName, context.mounted);
+                          },
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: Icon(
+                                  Icons.login_outlined,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                              Text(
+                                'Cerrar sesión',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      font: GoogleFonts.montserrat(
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                      letterSpacing: 0.0,
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ]
                   .divide(SizedBox(height: 16.0))

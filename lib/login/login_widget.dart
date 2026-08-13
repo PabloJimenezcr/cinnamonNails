@@ -803,21 +803,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                           );
                                         },
                                       ),
-                                      FlutterFlowIconButton(
-                                        borderRadius: 8.0,
-                                        buttonSize: 40.0,
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        icon: FaIcon(
-                                          FontAwesomeIcons.facebookF,
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          size: 24.0,
-                                        ),
-                                        onPressed: () {
-                                          print('IconButton pressed ...');
-                                        },
-                                      ),
                                     ].divide(SizedBox(width: 20.0)),
                                   ),
                                 ],

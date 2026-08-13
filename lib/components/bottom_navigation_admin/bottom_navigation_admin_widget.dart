@@ -2,22 +2,21 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'bottom_navigation_client_model.dart';
-export 'bottom_navigation_client_model.dart';
+import 'bottom_navigation_admin_model.dart';
+export 'bottom_navigation_admin_model.dart';
 
-class BottomNavigationClientWidget extends StatefulWidget {
-  const BottomNavigationClientWidget({super.key});
+class BottomNavigationAdminWidget extends StatefulWidget {
+  const BottomNavigationAdminWidget({super.key});
 
   @override
-  State<BottomNavigationClientWidget> createState() =>
-      _BottomNavigationClientWidgetState();
+  State<BottomNavigationAdminWidget> createState() =>
+      _BottomNavigationAdminWidgetState();
 }
 
-class _BottomNavigationClientWidgetState
-    extends State<BottomNavigationClientWidget> {
-  late BottomNavigationClientModel _model;
+class _BottomNavigationAdminWidgetState
+    extends State<BottomNavigationAdminWidget> {
+  late BottomNavigationAdminModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -28,7 +27,7 @@ class _BottomNavigationClientWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BottomNavigationClientModel());
+    _model = createModel(context, () => BottomNavigationAdminModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -44,7 +43,7 @@ class _BottomNavigationClientWidgetState
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: MediaQuery.sizeOf(context).height * 0.28,
+      height: MediaQuery.sizeOf(context).height * 0.1,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).secondaryBackground,
       ),
@@ -107,8 +106,38 @@ class _BottomNavigationClientWidgetState
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                child: FaIcon(
-                  FontAwesomeIcons.handPaper,
+                child: Icon(
+                  Icons.calendar_month_outlined,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 24.0,
+                ),
+              ),
+              Text(
+                'Agenda',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      font: GoogleFonts.montserrat(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                      letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                    ),
+              ),
+            ],
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                child: Icon(
+                  Icons.spa_outlined,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),
@@ -138,37 +167,7 @@ class _BottomNavigationClientWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                 child: Icon(
-                  Icons.calendar_month_outlined,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24.0,
-                ),
-              ),
-              Text(
-                'Mis citas',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.montserrat(
-                        fontWeight:
-                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                        fontStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                      ),
-                      letterSpacing: 0.0,
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-              ),
-            ],
-          ),
-          Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
-                child: Icon(
-                  Icons.logout_outlined,
+                  Icons.login_outlined,
                   color: FlutterFlowTheme.of(context).primaryText,
                   size: 24.0,
                 ),

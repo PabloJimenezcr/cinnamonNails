@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'select_date_model.dart';
 export 'select_date_model.dart';
@@ -51,23 +52,36 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
         appBar: AppBar(
           backgroundColor: Color(0xFFFAF9F8),
           automaticallyImplyLeading: false,
-          leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-            child: FlutterFlowIconButton(
-              borderRadius: 22.0,
-              buttonSize: 44.0,
-              icon: Icon(
-                Icons.arrow_back_rounded,
-                color: Color(0xFFAC2E4D),
-                size: 24.0,
-              ),
-              onPressed: () {
-                print('IconButton pressed ...');
-              },
+          leading: FlutterFlowIconButton(
+            borderRadius: 8.0,
+            buttonSize: 44.0,
+            icon: FaIcon(
+              FontAwesomeIcons.arrowCircleLeft,
+              color: FlutterFlowTheme.of(context).primary,
+              size: 30.0,
             ),
+            onPressed: () async {
+              context.safePop();
+            },
+          ),
+          title: Text(
+            'Fecha y hora',
+            textAlign: TextAlign.center,
+            style: FlutterFlowTheme.of(context).headlineMedium.override(
+                  font: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.w600,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
+                  color: FlutterFlowTheme.of(context).primary,
+                  letterSpacing: 0.0,
+                  fontWeight: FontWeight.w600,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                ),
           ),
           actions: [],
-          centerTitle: false,
+          centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(
@@ -83,27 +97,6 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'Seleccione Fecha y hora',
-                        textAlign: TextAlign.center,
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              font: GoogleFonts.montserrat(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .fontStyle,
-                              ),
-                              color: FlutterFlowTheme.of(context).primary,
-                              fontSize: 26.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .headlineMedium
-                                  .fontStyle,
-                            ),
-                      ),
                       Padding(
                         padding: EdgeInsets.all(12.0),
                         child: Container(
@@ -119,8 +112,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                           ),
                           child: FlutterFlowCalendar(
                             color: FlutterFlowTheme.of(context).primary,
-                            iconColor:
-                                FlutterFlowTheme.of(context).secondaryText,
+                            iconColor: FlutterFlowTheme.of(context).primary,
                             weekFormat: false,
                             weekStartsMonday: false,
                             rowHeight: 48.0,
@@ -139,6 +131,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                         .titleLarge
                                         .fontStyle,
                                   ),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .titleLarge
@@ -147,24 +140,27 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                       .titleLarge
                                       .fontStyle,
                                 ),
-                            dayOfWeekStyle:
-                                FlutterFlowTheme.of(context).bodyLarge.override(
-                                      font: GoogleFonts.montserrat(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyLarge
-                                            .fontStyle,
-                                      ),
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyLarge
-                                          .fontStyle,
-                                    ),
+                            dayOfWeekStyle: FlutterFlowTheme.of(context)
+                                .bodyLarge
+                                .override(
+                                  font: GoogleFonts.montserrat(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyLarge
+                                        .fontStyle,
+                                  ),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyLarge
+                                      .fontStyle,
+                                ),
                             dateStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -176,6 +172,8 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                         .bodyMedium
                                         .fontStyle,
                                   ),
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -195,6 +193,8 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                         .titleSmall
                                         .fontStyle,
                                   ),
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                   letterSpacing: 0.0,
                                   fontWeight: FlutterFlowTheme.of(context)
                                       .titleSmall
@@ -242,7 +242,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                     .headlineMedium
                                     .fontStyle,
                               ),
-                              color: Color(0xFFAC2E4D),
+                              color: FlutterFlowTheme.of(context).primary,
                               fontSize: 26.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,
@@ -257,7 +257,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                           crossAxisCount: 2,
                           crossAxisSpacing: 15.0,
                           mainAxisSpacing: 12.0,
-                          childAspectRatio: 0.7,
+                          childAspectRatio: 3.0,
                         ),
                         primary: false,
                         shrinkWrap: true,
@@ -272,7 +272,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                               borderRadius: BorderRadius.circular(30.0),
                               shape: BoxShape.rectangle,
                               border: Border.all(
-                                color: Color(0xFFAC2E4D),
+                                color: FlutterFlowTheme.of(context).primary,
                                 width: 1.5,
                               ),
                             ),
@@ -308,7 +308,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                             width: double.infinity,
                             height: 0.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFFAC2E4D),
+                              color: FlutterFlowTheme.of(context).primary,
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                             child: Align(
@@ -348,7 +348,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                   .secondaryBackground,
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
-                                color: Color(0xFFAC2E4D),
+                                color: FlutterFlowTheme.of(context).primary,
                                 width: 1.5,
                               ),
                             ),
@@ -388,7 +388,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                   .secondaryBackground,
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
-                                color: Color(0xFFAC2E4D),
+                                color: FlutterFlowTheme.of(context).primary,
                                 width: 1.5,
                               ),
                             ),
@@ -428,7 +428,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                   .secondaryBackground,
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
-                                color: Color(0xFFAC2E4D),
+                                color: FlutterFlowTheme.of(context).primary,
                                 width: 1.5,
                               ),
                             ),
@@ -468,7 +468,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                   .secondaryBackground,
                               borderRadius: BorderRadius.circular(30.0),
                               border: Border.all(
-                                color: Color(0xFFAC2E4D),
+                                color: FlutterFlowTheme.of(context).primary,
                                 width: 1.5,
                               ),
                             ),
@@ -515,7 +515,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                       padding: EdgeInsets.all(8.0),
                       iconPadding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0xFFAC2E4D),
+                      color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 font: GoogleFonts.montserrat(
