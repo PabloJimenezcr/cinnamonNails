@@ -3,7 +3,6 @@ export '/login/login_widget.dart' show LoginWidget;
 export '/register/register_widget.dart' show RegisterWidget;
 export '/client/user_home/user_home_widget.dart' show UserHomeWidget;
 export '/splash_copy/splash_copy_widget.dart' show SplashCopyWidget;
-export '/client/testhome/testhome_widget.dart' show TesthomeWidget;
 export '/admin/admin_home/admin_home_widget.dart' show AdminHomeWidget;
 export '/admin/admin_services/admin_services_widget.dart'
     show AdminServicesWidget;
@@ -36,3 +35,4 @@ export '/client/appointment_management/appointment_management_widget.dart'
     show AppointmentManagementWidget;
 export '/client/services_client/services_client_widget.dart'
     show ServicesClientWidget;
+export '/client/home_user/home_user_widget.dart' show HomeUserWidget;

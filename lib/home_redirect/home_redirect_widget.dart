@@ -32,7 +32,7 @@ class _HomeRedirectWidgetState extends State<HomeRedirectWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (valueOrDefault(currentUserDocument?.role, '') == 'user') {
         context.pushNamedAuth(
-          TesthomeWidget.routeName,
+          HomeUserWidget.routeName,
           context.mounted,
           extra: <String, dynamic>{
             '__transition_info__': TransitionInfo(

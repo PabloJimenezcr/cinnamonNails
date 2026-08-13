@@ -92,7 +92,7 @@ class _CancellationAppointmentWidgetState
                         children: [
                           Icon(
                             Icons.calendar_today,
-                            color: Color(0xFFAC2E4D),
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 20.0,
                           ),
                           Text(
@@ -122,7 +122,7 @@ class _CancellationAppointmentWidgetState
                         children: [
                           Icon(
                             Icons.content_cut,
-                            color: Color(0xFFAC2E4D),
+                            color: FlutterFlowTheme.of(context).primary,
                             size: 20.0,
                           ),
                           Text(
@@ -179,7 +179,7 @@ class _CancellationAppointmentWidgetState
                 height: 56.0,
                 padding: EdgeInsets.all(8.0),
                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                color: Color(0xFFAC2E4D),
+                color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                       font: GoogleFonts.montserrat(
                         fontWeight: FontWeight.normal,
@@ -214,7 +214,7 @@ class _CancellationAppointmentWidgetState
                         fontStyle:
                             FlutterFlowTheme.of(context).titleSmall.fontStyle,
                       ),
-                      color: Color(0xFF574144),
+                      color: FlutterFlowTheme.of(context).primary,
                       fontSize: 16.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
@@ -223,8 +223,7 @@ class _CancellationAppointmentWidgetState
                     ),
                 elevation: 0.0,
                 borderSide: BorderSide(
-                  color: Color(0xFF574144),
-                  width: 1.0,
+                  width: 0.0,
                 ),
                 borderRadius: BorderRadius.circular(32.0),
               ),

@@ -20,11 +20,6 @@ class SchedulesRecord extends FirestoreRecord {
   DocumentReference? get employee => _employee;
   bool hasEmployee() => _employee != null;
 
-  // "day" field.
-  String? _day;
-  String get day => _day ?? '';
-  bool hasDay() => _day != null;
-
   // "startHour" field.
   String? _startHour;
   String get startHour => _startHour ?? '';
@@ -50,14 +45,19 @@ class SchedulesRecord extends FirestoreRecord {
   bool get active => _active ?? false;
   bool hasActive() => _active != null;
 
+  // "day" field.
+  DateTime? _day;
+  DateTime? get day => _day;
+  bool hasDay() => _day != null;
+
   void _initializeFields() {
     _employee = snapshotData['employee'] as DocumentReference?;
-    _day = snapshotData['day'] as String?;
     _startHour = snapshotData['startHour'] as String?;
     _endHour = snapshotData['endHour'] as String?;
     _breakStart = snapshotData['breakStart'] as String?;
     _breakEnd = snapshotData['breakEnd'] as String?;
     _active = snapshotData['active'] as bool?;
+    _day = snapshotData['day'] as DateTime?;
   }
 
   static CollectionReference get collection =>
@@ -96,22 +96,22 @@ class SchedulesRecord extends FirestoreRecord {
 
 Map<String, dynamic> createSchedulesRecordData({
   DocumentReference? employee,
-  String? day,
   String? startHour,
   String? endHour,
   String? breakStart,
   String? breakEnd,
   bool? active,
+  DateTime? day,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
       'employee': employee,
-      'day': day,
       'startHour': startHour,
       'endHour': endHour,
       'breakStart': breakStart,
       'breakEnd': breakEnd,
       'active': active,
+      'day': day,
     }.withoutNulls,
   );
 
@@ -124,23 +124,23 @@ class SchedulesRecordDocumentEquality implements Equality<SchedulesRecord> {
   @override
   bool equals(SchedulesRecord? e1, SchedulesRecord? e2) {
     return e1?.employee == e2?.employee &&
-        e1?.day == e2?.day &&
         e1?.startHour == e2?.startHour &&
         e1?.endHour == e2?.endHour &&
         e1?.breakStart == e2?.breakStart &&
         e1?.breakEnd == e2?.breakEnd &&
-        e1?.active == e2?.active;
+        e1?.active == e2?.active &&
+        e1?.day == e2?.day;
   }
 
   @override
   int hash(SchedulesRecord? e) => const ListEquality().hash([
         e?.employee,
-        e?.day,
         e?.startHour,
         e?.endHour,
         e?.breakStart,
         e?.breakEnd,
-        e?.active
+        e?.active,
+        e?.day
       ]);
 
   @override

@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -9,7 +10,12 @@ import 'service_detail_model.dart';
 export 'service_detail_model.dart';
 
 class ServiceDetailWidget extends StatefulWidget {
-  const ServiceDetailWidget({super.key});
+  const ServiceDetailWidget({
+    super.key,
+    required this.service,
+  });
+
+  final ServicesRecord? service;
 
   static String routeName = 'serviceDetail';
   static String routePath = '/serviceDetail';
@@ -115,7 +121,10 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Gel\nManicure',
+                              valueOrDefault<String>(
+                                widget.service?.name,
+                                'Servicio',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .displaySmall
                                   .override(
@@ -277,7 +286,7 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                         highlightColor: Colors.transparent,
                         onTap: () async {
                           context.pushNamed(
-                            TesthomeWidget.routeName,
+                            HomeUserWidget.routeName,
                             extra: <String, dynamic>{
                               '__transition_info__': TransitionInfo(
                                 hasTransition: true,

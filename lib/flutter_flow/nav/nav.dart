@@ -107,11 +107,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => SplashCopyWidget(),
         ),
         FFRoute(
-          name: TesthomeWidget.routeName,
-          path: TesthomeWidget.routePath,
-          builder: (context, params) => TesthomeWidget(),
-        ),
-        FFRoute(
           name: AdminHomeWidget.routeName,
           path: AdminHomeWidget.routePath,
           builder: (context, params) => AdminHomeWidget(),
@@ -182,7 +177,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ServiceDetailWidget.routeName,
           path: ServiceDetailWidget.routePath,
-          builder: (context, params) => ServiceDetailWidget(),
+          asyncParams: {
+            'service': getDoc(['services'], ServicesRecord.fromSnapshot),
+          },
+          builder: (context, params) => ServiceDetailWidget(
+            service: params.getParam(
+              'service',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: HomeRedirectWidget.routeName,
@@ -218,6 +221,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ServicesClientWidget.routeName,
           path: ServicesClientWidget.routePath,
           builder: (context, params) => ServicesClientWidget(),
+        ),
+        FFRoute(
+          name: HomeUserWidget.routeName,
+          path: HomeUserWidget.routePath,
+          builder: (context, params) => HomeUserWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
