@@ -34,3 +34,5 @@ export '/client/message_confirmation_appointment/message_confirmation_appointmen
     show MessageConfirmationAppointmentWidget;
 export '/client/appointment_management/appointment_management_widget.dart'
     show AppointmentManagementWidget;
+export '/client/services_client/services_client_widget.dart'
+    show ServicesClientWidget;

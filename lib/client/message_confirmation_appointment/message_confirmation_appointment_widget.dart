@@ -65,32 +65,43 @@ class _MessageConfirmationAppointmentWidgetState
                       alignment: AlignmentDirectional(0.0, 0.0),
                       child: Stack(
                         children: [
-                          Container(
-                            width: 110.0,
-                            height: 110.0,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Color(0xFFFFB2BC),
-                                width: 2.0,
-                              ),
-                            ),
+                          Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
-                          ),
-                          Container(
-                            width: 80.0,
-                            height: 80.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFF0627F),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Align(
+                            child: Container(
+                              width: 110.0,
+                              height: 110.0,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Color(0xFFFFB2BC),
+                                  width: 2.0,
+                                ),
+                              ),
                               alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Icon(
-                                Icons.check_rounded,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                size: 36.0,
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 15.0, 0.0, 0.0),
+                              child: Container(
+                                width: 80.0,
+                                height: 80.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFF0627F),
+                                  shape: BoxShape.circle,
+                                ),
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Icon(
+                                    Icons.check_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    size: 36.0,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -178,7 +189,7 @@ class _MessageConfirmationAppointmentWidgetState
                                   alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Icon(
                                     Icons.edit,
-                                    color: Color(0xFFF0627F),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 24.0,
                                   ),
                                 ),
@@ -253,7 +264,8 @@ class _MessageConfirmationAppointmentWidgetState
                                     children: [
                                       Icon(
                                         Icons.person_outline,
-                                        color: Color(0xFF574144),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         size: 18.0,
                                       ),
                                       Text(
@@ -268,7 +280,9 @@ class _MessageConfirmationAppointmentWidgetState
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF574144),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -292,7 +306,8 @@ class _MessageConfirmationAppointmentWidgetState
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF1A1C1C),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
@@ -313,7 +328,8 @@ class _MessageConfirmationAppointmentWidgetState
                                     children: [
                                       Icon(
                                         Icons.calendar_today_outlined,
-                                        color: Color(0xFF574144),
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
                                         size: 18.0,
                                       ),
                                       Text(
@@ -328,7 +344,9 @@ class _MessageConfirmationAppointmentWidgetState
                                                         .labelMedium
                                                         .fontStyle,
                                               ),
-                                              color: Color(0xFF574144),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
                                               fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -352,7 +370,8 @@ class _MessageConfirmationAppointmentWidgetState
                                                     .bodyMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF1A1C1C),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
@@ -375,7 +394,7 @@ class _MessageConfirmationAppointmentWidgetState
                                 children: [
                                   Icon(
                                     Icons.access_time_rounded,
-                                    color: Color(0xFF574144),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     size: 18.0,
                                   ),
                                   Text(
@@ -390,7 +409,8 @@ class _MessageConfirmationAppointmentWidgetState
                                                     .labelMedium
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF574144),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w600,
@@ -413,7 +433,8 @@ class _MessageConfirmationAppointmentWidgetState
                                             .bodyMedium
                                             .fontStyle,
                                       ),
-                                      color: Color(0xFF1A1C1C),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryText,
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -435,12 +456,12 @@ class _MessageConfirmationAppointmentWidgetState
                   },
                   text: 'Ver citas agendadas',
                   options: FFButtonOptions(
-                    width: double.infinity,
+                    width: MediaQuery.sizeOf(context).width * 0.9,
                     height: 56.0,
                     padding: EdgeInsets.all(8.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0xFFAC2E4D),
+                    color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           font: GoogleFonts.montserrat(
                             fontWeight: FontWeight.w600,
@@ -466,12 +487,12 @@ class _MessageConfirmationAppointmentWidgetState
                   },
                   text: 'Volver al inicio',
                   options: FFButtonOptions(
-                    width: double.infinity,
+                    width: MediaQuery.sizeOf(context).width * 0.9,
                     height: 56.0,
                     padding: EdgeInsets.all(8.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: Color(0xFFAC2E4D),
+                    color: Color(0x00AC2E4D),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           font: GoogleFonts.montserrat(
                             fontWeight: FontWeight.w600,
@@ -479,8 +500,7 @@ class _MessageConfirmationAppointmentWidgetState
                                 .titleSmall
                                 .fontStyle,
                           ),
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                          color: FlutterFlowTheme.of(context).primary,
                           fontSize: 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.w600,

@@ -213,6 +213,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: AppointmentManagementWidget.routeName,
           path: AppointmentManagementWidget.routePath,
           builder: (context, params) => AppointmentManagementWidget(),
+        ),
+        FFRoute(
+          name: ServicesClientWidget.routeName,
+          path: ServicesClientWidget.routePath,
+          builder: (context, params) => ServicesClientWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
