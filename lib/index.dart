@@ -1,7 +1,6 @@
 // Export pages
 export '/login/login_widget.dart' show LoginWidget;
 export '/register/register_widget.dart' show RegisterWidget;
-export '/client/user_home/user_home_widget.dart' show UserHomeWidget;
 export '/splash_copy/splash_copy_widget.dart' show SplashCopyWidget;
 export '/admin/admin_home/admin_home_widget.dart' show AdminHomeWidget;
 export '/admin/admin_services/admin_services_widget.dart'
@@ -24,8 +23,6 @@ export '/admin/admin_products_add/admin_products_add_widget.dart'
 export '/client/service_detail/service_detail_widget.dart'
     show ServiceDetailWidget;
 export '/home_redirect/home_redirect_widget.dart' show HomeRedirectWidget;
-export '/client/select_person/select_person_widget.dart'
-    show SelectPersonWidget;
 export '/client/select_date/select_date_widget.dart' show SelectDateWidget;
 export '/client/confirmation_appointment/confirmation_appointment_widget.dart'
     show ConfirmationAppointmentWidget;
@@ -36,3 +33,7 @@ export '/client/appointment_management/appointment_management_widget.dart'
 export '/client/services_client/services_client_widget.dart'
     show ServicesClientWidget;
 export '/client/home_user/home_user_widget.dart' show HomeUserWidget;
+export '/client/appointment_re_schedule/appointment_re_schedule_widget.dart'
+    show AppointmentReScheduleWidget;
+export '/client/products_client/products_client_widget.dart'
+    show ProductsClientWidget;

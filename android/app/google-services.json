@@ -12,7 +12,20 @@
           "package_name": "com.mycompany.cinnamonnails"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "460972102086-rcdso76ahvsuldq2d3oj254qqdp2gnss.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.cinnamonnails",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "460972102086-1c9728fo0ssvdsr65fm63m4u0ku96pen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBI-o_GS1CuYzLs9g7bkNi09XAG_ZxZzVo"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460972102086-1c9728fo0ssvdsr65fm63m4u0ku96pen.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460972102086-3hdrmkao7l9taqgkgtk3fuj7d1gmusmj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cr.cinnamonnails.app"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +56,20 @@
           "package_name": "cr.cinnamonnails.app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "460972102086-ieh7ngkthem2pul51vl1l1aeot453mck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cr.cinnamonnails.app",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "460972102086-1c9728fo0ssvdsr65fm63m4u0ku96pen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBI-o_GS1CuYzLs9g7bkNi09XAG_ZxZzVo"
@@ -39,7 +77,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460972102086-1c9728fo0ssvdsr65fm63m4u0ku96pen.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460972102086-3hdrmkao7l9taqgkgtk3fuj7d1gmusmj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "cr.cinnamonnails.app"
+              }
+            }
+          ]
         }
       }
     }

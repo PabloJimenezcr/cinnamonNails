@@ -6,36 +6,48 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'select_date_model.dart';
-export 'select_date_model.dart';
+import 'appointment_re_schedule_model.dart';
+export 'appointment_re_schedule_model.dart';
 
-class SelectDateWidget extends StatefulWidget {
-  const SelectDateWidget({
+class AppointmentReScheduleWidget extends StatefulWidget {
+  const AppointmentReScheduleWidget({
     super.key,
     required this.serviceDocument,
+    required this.scheduleDocument,
+    required this.appointmentDocument,
   });
 
-  /// Document of the selected service by the user
   final ServicesRecord? serviceDocument;
+  final SchedulesRecord? scheduleDocument;
+  final AppointmentsRecord? appointmentDocument;
 
-  static String routeName = 'selectDate';
-  static String routePath = '/selectDate';
+  static String routeName = 'appointmentReSchedule';
+  static String routePath = '/appointmentReSchedule';
 
   @override
-  State<SelectDateWidget> createState() => _SelectDateWidgetState();
+  State<AppointmentReScheduleWidget> createState() =>
+      _AppointmentReScheduleWidgetState();
 }
 
-class _SelectDateWidgetState extends State<SelectDateWidget> {
-  late SelectDateModel _model;
+class _AppointmentReScheduleWidgetState
+    extends State<AppointmentReScheduleWidget> {
+  late AppointmentReScheduleModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectDateModel());
+    _model = createModel(context, () => AppointmentReScheduleModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.selectedScheduleDocument = widget.scheduleDocument;
+      safeSetState(() {});
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -502,10 +514,7 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              valueOrDefault<String>(
-                                                columnEmployeesRecord.name,
-                                                'Employee name',
-                                              ),
+                                              columnEmployeesRecord.name,
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .headlineSmall
@@ -570,34 +579,35 @@ class _SelectDateWidgetState extends State<SelectDateWidget> {
                             ),
                             FFButtonWidget(
                               onPressed: () async {
-                                if (Navigator.of(context).canPop()) {
-                                  context.pop();
-                                }
+                                await widget.appointmentDocument!.reference
+                                    .update(createAppointmentsRecordData(
+                                  schedule: _model
+                                      .selectedScheduleDocument?.reference,
+                                  employee: columnEmployeesRecord.reference,
+                                  day: _model.selectedScheduleDocument?.day,
+                                ));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      'Cita re-agendada exitosamente!',
+                                      style: TextStyle(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                      ),
+                                    ),
+                                    duration: Duration(milliseconds: 4000),
+                                    backgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                  ),
+                                );
+
                                 context.pushNamed(
-                                  ConfirmationAppointmentWidget.routeName,
-                                  queryParameters: {
-                                    'serviceDocument': serializeParam(
-                                      widget.serviceDocument,
-                                      ParamType.Document,
-                                    ),
-                                    'scheduleDocument': serializeParam(
-                                      _model.selectedScheduleDocument,
-                                      ParamType.Document,
-                                    ),
-                                    'employeeDocument': serializeParam(
-                                      columnEmployeesRecord,
-                                      ParamType.Document,
-                                    ),
-                                  }.withoutNulls,
+                                  AppointmentManagementWidget.routeName,
                                   extra: <String, dynamic>{
-                                    'serviceDocument': widget.serviceDocument,
-                                    'scheduleDocument':
-                                        _model.selectedScheduleDocument,
-                                    'employeeDocument': columnEmployeesRecord,
                                     '__transition_info__': TransitionInfo(
                                       hasTransition: true,
                                       transitionType:
-                                          PageTransitionType.bottomToTop,
+                                          PageTransitionType.topToBottom,
                                     ),
                                   },
                                 );

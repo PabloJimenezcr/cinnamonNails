@@ -2,10 +2,11 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_calendar.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
-import 'select_date_widget.dart' show SelectDateWidget;
+import 'appointment_re_schedule_widget.dart' show AppointmentReScheduleWidget;
 import 'package:flutter/material.dart';
 
-class SelectDateModel extends FlutterFlowModel<SelectDateWidget> {
+class AppointmentReScheduleModel
+    extends FlutterFlowModel<AppointmentReScheduleWidget> {
   ///  Local state fields for this page.
 
   SchedulesRecord? selectedScheduleDocument;

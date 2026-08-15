@@ -60,12 +60,12 @@ Future<void> generateSchedules() async {
         .where('day', isLessThan: endOfDay)
         .get();
 
-    // If no schedules exist for this day yet, create them with DateTime/Timestamp
+    // If no schedules exist for this day yet, create them
     if (existingQuery.docs.isEmpty) {
       for (var shift in shifts) {
+        // Notice 'employee' is omitted so Firestore marks it as unset
         await firestore.collection('schedules').add({
-          'employee': null, // Unassigned initially
-          'day': targetDate, // Saved as a DateTime/Timestamp object
+          'day': targetDate,
           'startHour': shift['startHour'],
           'endHour': shift['endHour'],
           'breakStart': shift['breakStart'],

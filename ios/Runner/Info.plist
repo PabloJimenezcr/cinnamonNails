@@ -28,7 +28,7 @@
             <string>Editor</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <!--FF_REVERSED_CLIENT_ID-->
+                <string>com.googleusercontent.apps.460972102086-3hdrmkao7l9taqgkgtk3fuj7d1gmusmj</string>
                 
             </array>
         </dict>

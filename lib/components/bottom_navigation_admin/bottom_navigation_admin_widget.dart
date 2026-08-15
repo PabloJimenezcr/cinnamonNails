@@ -59,7 +59,7 @@ class _BottomNavigationAdminWidgetState
             highlightColor: Colors.transparent,
             onTap: () async {
               context.pushNamed(
-                UserHomeWidget.routeName,
+                AdminHomeWidget.routeName,
                 extra: <String, dynamic>{
                   '__transition_info__': TransitionInfo(
                     hasTransition: true,

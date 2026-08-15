@@ -1,13 +1,31 @@
+import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'message_confirmation_appointment_model.dart';
 export 'message_confirmation_appointment_model.dart';
 
 class MessageConfirmationAppointmentWidget extends StatefulWidget {
-  const MessageConfirmationAppointmentWidget({super.key});
+  const MessageConfirmationAppointmentWidget({
+    super.key,
+    required this.scheduleDocument,
+    required this.serviceDocument,
+    required this.employeeDocument,
+  });
+
+  /// Document of the selected schedule
+  final SchedulesRecord? scheduleDocument;
+
+  /// Document of the selected service
+  final ServicesRecord? serviceDocument;
+
+  /// Document of the selected employee
+  final EmployeesRecord? employeeDocument;
 
   static String routeName = 'messageConfirmationAppointment';
   static String routePath = '/messageConfirmationAppointment';
@@ -18,15 +36,53 @@ class MessageConfirmationAppointmentWidget extends StatefulWidget {
 }
 
 class _MessageConfirmationAppointmentWidgetState
-    extends State<MessageConfirmationAppointmentWidget> {
+    extends State<MessageConfirmationAppointmentWidget>
+    with TickerProviderStateMixin {
   late MessageConfirmationAppointmentModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => MessageConfirmationAppointmentModel());
+
+    animationsMap.addAll({
+      'containerOnPageLoadAnimation': AnimationInfo(
+        loop: true,
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 2000.0.ms,
+            begin: Offset(1.0, 1.0),
+            end: Offset(1.05, 1.05),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 2000.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          RotateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 5000.0.ms,
+            begin: -0.25,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -78,7 +134,8 @@ class _MessageConfirmationAppointmentWidgetState
                                 ),
                               ),
                               alignment: AlignmentDirectional(0.0, 0.0),
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['containerOnPageLoadAnimation']!),
                           ),
                           Align(
                             alignment: AlignmentDirectional(0.0, 0.0),
@@ -100,7 +157,8 @@ class _MessageConfirmationAppointmentWidgetState
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
                                     size: 36.0,
-                                  ),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'iconOnPageLoadAnimation']!),
                                 ),
                               ),
                             ),
@@ -221,7 +279,10 @@ class _MessageConfirmationAppointmentWidgetState
                                         ),
                                   ),
                                   Text(
-                                    'Acrílicas',
+                                    valueOrDefault<String>(
+                                      widget.serviceDocument?.name,
+                                      'Servicio Seleccionado',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .titleLarge
                                         .override(
@@ -295,7 +356,10 @@ class _MessageConfirmationAppointmentWidgetState
                                     ].divide(SizedBox(width: 6.0)),
                                   ),
                                   Text(
-                                    'Andrea',
+                                    valueOrDefault<String>(
+                                      widget.employeeDocument?.name,
+                                      'Empleada',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -359,7 +423,8 @@ class _MessageConfirmationAppointmentWidgetState
                                     ].divide(SizedBox(width: 6.0)),
                                   ),
                                   Text(
-                                    'Vie, 14 Ago',
+                                    dateTimeFormat("MMMMEEEEd",
+                                        widget.scheduleDocument!.day!),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -423,7 +488,7 @@ class _MessageConfirmationAppointmentWidgetState
                                 ].divide(SizedBox(width: 6.0)),
                               ),
                               Text(
-                                '10:00 AM',
+                                '${widget.scheduleDocument?.startHour} hasta las ${widget.scheduleDocument?.breakEnd}',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -451,8 +516,19 @@ class _MessageConfirmationAppointmentWidgetState
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    if (Navigator.of(context).canPop()) {
+                      context.pop();
+                    }
+                    context.pushNamed(
+                      AppointmentManagementWidget.routeName,
+                      extra: <String, dynamic>{
+                        '__transition_info__': TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.bottomToTop,
+                        ),
+                      },
+                    );
                   },
                   text: 'Ver citas agendadas',
                   options: FFButtonOptions(
@@ -482,8 +558,16 @@ class _MessageConfirmationAppointmentWidgetState
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    context.pushNamed(
+                      HomeUserWidget.routeName,
+                      extra: <String, dynamic>{
+                        '__transition_info__': TransitionInfo(
+                          hasTransition: true,
+                          transitionType: PageTransitionType.bottomToTop,
+                        ),
+                      },
+                    );
                   },
                   text: 'Volver al inicio',
                   options: FFButtonOptions(

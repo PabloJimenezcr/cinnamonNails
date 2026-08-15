@@ -5,10 +5,6 @@ import 'package:flutter/material.dart';
 
 class AdminEmployeeSchedulesModel
     extends FlutterFlowModel<AdminEmployeeSchedulesWidget> {
-  ///  Local state fields for this page.
-  /// The schedule the User clicked
-  DocumentReference? selectedSchedule;
-
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for DropDown widget.

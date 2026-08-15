@@ -10,9 +10,9 @@ import 'schema/services_record.dart';
 import 'schema/products_record.dart';
 import 'schema/employees_record.dart';
 import 'schema/appointments_record.dart';
-import 'schema/schedules_record.dart';
 import 'schema/settings_record.dart';
 import 'schema/notifications_record.dart';
+import 'schema/schedules_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -26,9 +26,9 @@ export 'schema/services_record.dart';
 export 'schema/products_record.dart';
 export 'schema/employees_record.dart';
 export 'schema/appointments_record.dart';
-export 'schema/schedules_record.dart';
 export 'schema/settings_record.dart';
 export 'schema/notifications_record.dart';
+export 'schema/schedules_record.dart';
 
 /// Functions to query UsersRecords (as a Stream and as a Future).
 Future<int> queryUsersRecordCount({
@@ -215,43 +215,6 @@ Future<List<AppointmentsRecord>> queryAppointmentsRecordOnce({
       singleRecord: singleRecord,
     );
 
-/// Functions to query SchedulesRecords (as a Stream and as a Future).
-Future<int> querySchedulesRecordCount({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-}) =>
-    queryCollectionCount(
-      SchedulesRecord.collection,
-      queryBuilder: queryBuilder,
-      limit: limit,
-    );
-
-Stream<List<SchedulesRecord>> querySchedulesRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      SchedulesRecord.collection,
-      SchedulesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<SchedulesRecord>> querySchedulesRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      SchedulesRecord.collection,
-      SchedulesRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
 /// Functions to query SettingsRecords (as a Stream and as a Future).
 Future<int> querySettingsRecordCount({
   Query Function(Query)? queryBuilder,
@@ -321,6 +284,43 @@ Future<List<NotificationsRecord>> queryNotificationsRecordOnce({
     queryCollectionOnce(
       NotificationsRecord.collection,
       NotificationsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query SchedulesRecords (as a Stream and as a Future).
+Future<int> querySchedulesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      SchedulesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<SchedulesRecord>> querySchedulesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      SchedulesRecord.collection,
+      SchedulesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<SchedulesRecord>> querySchedulesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      SchedulesRecord.collection,
+      SchedulesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

@@ -63,7 +63,7 @@ class _AdminHomeWidgetState extends State<AdminHomeWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
                     child: Container(
                       width: double.infinity,
-                      height: 150.0,
+                      height: 130.0,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primary,
                         borderRadius: BorderRadius.circular(20.0),
@@ -126,7 +126,7 @@ class _AdminHomeWidgetState extends State<AdminHomeWidget> {
                                               size: 20.0,
                                             ),
                                             Text(
-                                              '3 citas para hoy',
+                                              'Hoy tendremos muchas reservaciones!',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -166,54 +166,6 @@ class _AdminHomeWidgetState extends State<AdminHomeWidget> {
                           ),
                         ],
                       ),
-                    ),
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      await actions.generateSchedules();
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Horarios generados exitosamente',
-                            style: TextStyle(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                            ),
-                          ),
-                          duration: Duration(milliseconds: 4000),
-                          backgroundColor:
-                              FlutterFlowTheme.of(context).secondary,
-                        ),
-                      );
-                    },
-                    text: 'Generar horarios',
-                    options: FFButtonOptions(
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: FlutterFlowTheme.of(context).primary,
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                font: GoogleFonts.montserrat(
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontWeight,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .fontStyle,
-                                ),
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                                fontWeight: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontWeight,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .fontStyle,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                   Column(
@@ -957,6 +909,58 @@ class _AdminHomeWidgetState extends State<AdminHomeWidget> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Opacity(
+                    opacity: 0.0,
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        await actions.generateSchedules();
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Horarios generados exitosamente',
+                              style: TextStyle(
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                              ),
+                            ),
+                            duration: Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primary,
+                          ),
+                        );
+                      },
+                      text: 'Generar horarios',
+                      options: FFButtonOptions(
+                        height: 44.9,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  font: GoogleFonts.montserrat(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                   ),

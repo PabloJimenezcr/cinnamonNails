@@ -190,10 +190,8 @@ class _AdminEmployeeSchedulesWidgetState
                             'active',
                             isEqualTo: true,
                           )
-                          .where(
-                            'employee',
-                            isEqualTo: null,
-                          ),
+                          .orderBy('day')
+                          .orderBy('startHour'),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
@@ -363,7 +361,7 @@ class _AdminEmployeeSchedulesWidgetState
                                         CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        dateTimeFormat("EEEE",
+                                        dateTimeFormat("MMMMEEEEd",
                                             listViewSchedulesRecord.day!),
                                         style: FlutterFlowTheme.of(context)
                                             .headlineLarge
@@ -376,7 +374,7 @@ class _AdminEmployeeSchedulesWidgetState
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF1A1C1C),
-                                              fontSize: 32.0,
+                                              fontSize: 26.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.bold,
                                               fontStyle:

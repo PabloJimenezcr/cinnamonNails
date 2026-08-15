@@ -97,11 +97,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => RegisterWidget(),
         ),
         FFRoute(
-          name: UserHomeWidget.routeName,
-          path: UserHomeWidget.routePath,
-          builder: (context, params) => UserHomeWidget(),
-        ),
-        FFRoute(
           name: SplashCopyWidget.routeName,
           path: SplashCopyWidget.routePath,
           builder: (context, params) => SplashCopyWidget(),
@@ -193,24 +188,70 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => HomeRedirectWidget(),
         ),
         FFRoute(
-          name: SelectPersonWidget.routeName,
-          path: SelectPersonWidget.routePath,
-          builder: (context, params) => SelectPersonWidget(),
-        ),
-        FFRoute(
           name: SelectDateWidget.routeName,
           path: SelectDateWidget.routePath,
-          builder: (context, params) => SelectDateWidget(),
+          asyncParams: {
+            'serviceDocument':
+                getDoc(['services'], ServicesRecord.fromSnapshot),
+          },
+          builder: (context, params) => SelectDateWidget(
+            serviceDocument: params.getParam(
+              'serviceDocument',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: ConfirmationAppointmentWidget.routeName,
           path: ConfirmationAppointmentWidget.routePath,
-          builder: (context, params) => ConfirmationAppointmentWidget(),
+          asyncParams: {
+            'serviceDocument':
+                getDoc(['services'], ServicesRecord.fromSnapshot),
+            'scheduleDocument':
+                getDoc(['schedules'], SchedulesRecord.fromSnapshot),
+            'employeeDocument':
+                getDoc(['employees'], EmployeesRecord.fromSnapshot),
+          },
+          builder: (context, params) => ConfirmationAppointmentWidget(
+            serviceDocument: params.getParam(
+              'serviceDocument',
+              ParamType.Document,
+            ),
+            scheduleDocument: params.getParam(
+              'scheduleDocument',
+              ParamType.Document,
+            ),
+            employeeDocument: params.getParam(
+              'employeeDocument',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: MessageConfirmationAppointmentWidget.routeName,
           path: MessageConfirmationAppointmentWidget.routePath,
-          builder: (context, params) => MessageConfirmationAppointmentWidget(),
+          asyncParams: {
+            'scheduleDocument':
+                getDoc(['schedules'], SchedulesRecord.fromSnapshot),
+            'serviceDocument':
+                getDoc(['services'], ServicesRecord.fromSnapshot),
+            'employeeDocument':
+                getDoc(['employees'], EmployeesRecord.fromSnapshot),
+          },
+          builder: (context, params) => MessageConfirmationAppointmentWidget(
+            scheduleDocument: params.getParam(
+              'scheduleDocument',
+              ParamType.Document,
+            ),
+            serviceDocument: params.getParam(
+              'serviceDocument',
+              ParamType.Document,
+            ),
+            employeeDocument: params.getParam(
+              'employeeDocument',
+              ParamType.Document,
+            ),
+          ),
         ),
         FFRoute(
           name: AppointmentManagementWidget.routeName,
@@ -226,6 +267,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: HomeUserWidget.routeName,
           path: HomeUserWidget.routePath,
           builder: (context, params) => HomeUserWidget(),
+        ),
+        FFRoute(
+          name: AppointmentReScheduleWidget.routeName,
+          path: AppointmentReScheduleWidget.routePath,
+          asyncParams: {
+            'serviceDocument':
+                getDoc(['services'], ServicesRecord.fromSnapshot),
+            'scheduleDocument':
+                getDoc(['schedules'], SchedulesRecord.fromSnapshot),
+            'appointmentDocument':
+                getDoc(['appointments'], AppointmentsRecord.fromSnapshot),
+          },
+          builder: (context, params) => AppointmentReScheduleWidget(
+            serviceDocument: params.getParam(
+              'serviceDocument',
+              ParamType.Document,
+            ),
+            scheduleDocument: params.getParam(
+              'scheduleDocument',
+              ParamType.Document,
+            ),
+            appointmentDocument: params.getParam(
+              'appointmentDocument',
+              ParamType.Document,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ProductsClientWidget.routeName,
+          path: ProductsClientWidget.routePath,
+          builder: (context, params) => ProductsClientWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

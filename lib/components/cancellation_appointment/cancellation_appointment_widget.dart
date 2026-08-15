@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -7,7 +8,18 @@ import 'cancellation_appointment_model.dart';
 export 'cancellation_appointment_model.dart';
 
 class CancellationAppointmentWidget extends StatefulWidget {
-  const CancellationAppointmentWidget({super.key});
+  const CancellationAppointmentWidget({
+    super.key,
+    required this.apointmentDocument,
+    required this.scheduleDocument,
+    required this.employeeDocument,
+    required this.serviceDocument,
+  });
+
+  final AppointmentsRecord? apointmentDocument;
+  final SchedulesRecord? scheduleDocument;
+  final EmployeesRecord? employeeDocument;
+  final ServicesRecord? serviceDocument;
 
   @override
   State<CancellationAppointmentWidget> createState() =>
@@ -70,7 +82,7 @@ class _CancellationAppointmentWidgetState
                   ),
             ),
             Padding(
-              padding: EdgeInsets.all(16.0),
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 8.0, 16.0),
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -93,10 +105,10 @@ class _CancellationAppointmentWidgetState
                           Icon(
                             Icons.calendar_today,
                             color: FlutterFlowTheme.of(context).primary,
-                            size: 20.0,
+                            size: 16.0,
                           ),
                           Text(
-                            'Viernes 14 de agosto, 10:00 AM',
+                            '${dateTimeFormat("MMMMEEEEd", widget.scheduleDocument?.day)}, ${widget.scheduleDocument?.startHour}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -107,7 +119,7 @@ class _CancellationAppointmentWidgetState
                                         .fontStyle,
                                   ),
                                   color: Color(0xFF1A1C1C),
-                                  fontSize: 16.0,
+                                  fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                   fontStyle: FlutterFlowTheme.of(context)
@@ -123,10 +135,10 @@ class _CancellationAppointmentWidgetState
                           Icon(
                             Icons.content_cut,
                             color: FlutterFlowTheme.of(context).primary,
-                            size: 20.0,
+                            size: 16.0,
                           ),
                           Text(
-                            'Acrílicas con Andrea',
+                            '${widget.serviceDocument?.name} con ${widget.employeeDocument?.name}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -137,7 +149,7 @@ class _CancellationAppointmentWidgetState
                                         .fontStyle,
                                   ),
                                   color: Color(0xFF574144),
-                                  fontSize: 16.0,
+                                  fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.normal,
                                   fontStyle: FlutterFlowTheme.of(context)
@@ -170,8 +182,24 @@ class _CancellationAppointmentWidgetState
                   ),
             ),
             FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
+              onPressed: () async {
+                await widget.apointmentDocument!.reference
+                    .update(createAppointmentsRecordData(
+                  active: false,
+                ));
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      'Cita cancelada exitosamente.',
+                      style: TextStyle(
+                        color: FlutterFlowTheme.of(context).primaryText,
+                      ),
+                    ),
+                    duration: Duration(milliseconds: 4000),
+                    backgroundColor: FlutterFlowTheme.of(context).secondary,
+                  ),
+                );
+                Navigator.pop(context);
               },
               text: 'Sí, cancelar',
               options: FFButtonOptions(
@@ -198,8 +226,8 @@ class _CancellationAppointmentWidgetState
               ),
             ),
             FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
+              onPressed: () async {
+                Navigator.pop(context);
               },
               text: 'Volver',
               options: FFButtonOptions(

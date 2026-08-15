@@ -1,7 +1,10 @@
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +12,21 @@ import 'confirmation_appointment_model.dart';
 export 'confirmation_appointment_model.dart';
 
 class ConfirmationAppointmentWidget extends StatefulWidget {
-  const ConfirmationAppointmentWidget({super.key});
+  const ConfirmationAppointmentWidget({
+    super.key,
+    required this.serviceDocument,
+    required this.scheduleDocument,
+    required this.employeeDocument,
+  });
+
+  /// Document of the selected service
+  final ServicesRecord? serviceDocument;
+
+  /// Document of the selected service
+  final SchedulesRecord? scheduleDocument;
+
+  /// Document of the employee
+  final EmployeesRecord? employeeDocument;
 
   static String routeName = 'confirmationAppointment';
   static String routePath = '/confirmationAppointment';
@@ -136,7 +153,10 @@ class _ConfirmationAppointmentWidgetState
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Acrílicas',
+                                    valueOrDefault<String>(
+                                      widget.serviceDocument?.name,
+                                      'Servicio Nombre',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .headlineSmall
                                         .override(
@@ -158,7 +178,10 @@ class _ConfirmationAppointmentWidgetState
                                         ),
                                   ),
                                   Text(
-                                    'Set completo, diseño básico',
+                                    valueOrDefault<String>(
+                                      widget.serviceDocument?.description,
+                                      'Donec hendrerit tortor sit amet fermentum pellentesque. Fusce vestibulum nunc a libero euismod condimentum.',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -183,7 +206,15 @@ class _ConfirmationAppointmentWidgetState
                               ),
                             ),
                             Text(
-                              '₡25.000',
+                              valueOrDefault<String>(
+                                formatNumber(
+                                  widget.serviceDocument?.price,
+                                  formatType: FormatType.decimal,
+                                  decimalType: DecimalType.automatic,
+                                  currency: '₡',
+                                ),
+                                'NULL',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
@@ -279,7 +310,12 @@ class _ConfirmationAppointmentWidgetState
                                             ),
                                       ),
                                       Text(
-                                        'Andrea',
+                                        valueOrDefault<String>(
+                                          widget.employeeDocument
+                                              ?.hasName()
+                                              .toString(),
+                                          'Nombre Empleada',
+                                        ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
@@ -364,7 +400,8 @@ class _ConfirmationAppointmentWidgetState
                                             ),
                                       ),
                                       Text(
-                                        'Viernes 14 de agosto',
+                                        dateTimeFormat("MMMMEEEEd",
+                                            widget.scheduleDocument!.day!),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
                                             .override(
@@ -508,7 +545,15 @@ class _ConfirmationAppointmentWidgetState
                               ),
                         ),
                         Text(
-                          '₡25.000',
+                          valueOrDefault<String>(
+                            formatNumber(
+                              widget.serviceDocument?.price,
+                              formatType: FormatType.decimal,
+                              decimalType: DecimalType.automatic,
+                              currency: '₡',
+                            ),
+                            'NULL',
+                          ),
                           style: FlutterFlowTheme.of(context)
                               .headlineMedium
                               .override(
@@ -531,8 +576,52 @@ class _ConfirmationAppointmentWidgetState
                     ),
                   ),
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      await AppointmentsRecord.collection.doc().set({
+                        ...createAppointmentsRecordData(
+                          user: currentUserReference,
+                          employee: widget.employeeDocument?.reference,
+                          service: widget.serviceDocument?.reference,
+                          schedule: widget.scheduleDocument?.reference,
+                          finished: false,
+                          active: true,
+                          day: widget.scheduleDocument?.day,
+                        ),
+                        ...mapToFirestore(
+                          {
+                            'createdAt': FieldValue.serverTimestamp(),
+                          },
+                        ),
+                      });
+                      if (Navigator.of(context).canPop()) {
+                        context.pop();
+                      }
+                      context.pushNamed(
+                        MessageConfirmationAppointmentWidget.routeName,
+                        queryParameters: {
+                          'scheduleDocument': serializeParam(
+                            widget.scheduleDocument,
+                            ParamType.Document,
+                          ),
+                          'serviceDocument': serializeParam(
+                            widget.serviceDocument,
+                            ParamType.Document,
+                          ),
+                          'employeeDocument': serializeParam(
+                            widget.employeeDocument,
+                            ParamType.Document,
+                          ),
+                        }.withoutNulls,
+                        extra: <String, dynamic>{
+                          'scheduleDocument': widget.scheduleDocument,
+                          'serviceDocument': widget.serviceDocument,
+                          'employeeDocument': widget.employeeDocument,
+                          '__transition_info__': TransitionInfo(
+                            hasTransition: true,
+                            transitionType: PageTransitionType.bottomToTop,
+                          ),
+                        },
+                      );
                     },
                     text: 'CONFIRMAR CITA',
                     options: FFButtonOptions(

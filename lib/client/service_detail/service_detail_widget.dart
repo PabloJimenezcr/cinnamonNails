@@ -60,8 +60,8 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
             children: [
               Stack(
                 children: [
-                  Image.asset(
-                    'assets/images/jlrfma.png',
+                  Image.network(
+                    '${widget.service?.imageUrl}',
                     width: double.infinity,
                     height: 300.0,
                     fit: BoxFit.cover,
@@ -135,7 +135,7 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                                           .fontStyle,
                                     ),
                                     color: Color(0xFF1A1C1C),
-                                    fontSize: 40.0,
+                                    fontSize: 25.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
@@ -145,7 +145,12 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                                   ),
                             ),
                             Text(
-                              '\$45',
+                              formatNumber(
+                                widget.service!.price,
+                                formatType: FormatType.custom,
+                                format: '₡',
+                                locale: '',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .headlineMedium
                                   .override(
@@ -171,11 +176,34 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                           children: [
                             Icon(
                               Icons.access_time_rounded,
-                              color: Color(0xFF574144),
+                              color: FlutterFlowTheme.of(context).primary,
                               size: 18.0,
                             ),
                             Text(
-                              '60 min',
+                              valueOrDefault<String>(
+                                widget.service?.duration.toString(),
+                                'duracion',
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.montserrat(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                            ),
+                            Text(
+                              'min',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -197,7 +225,10 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                           ].divide(SizedBox(width: 6.0)),
                         ),
                         Text(
-                          'Experience the ultimate in polished grace with our Signature Gel Manicure. This premium service begins with a gentle, meticulous cuticle care and nail shaping process, ensuring a flawless canvas.',
+                          valueOrDefault<String>(
+                            widget.service?.description,
+                            'descripcion',
+                          ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.montserrat(
@@ -218,9 +249,19 @@ class _ServiceDetailWidgetState extends State<ServiceDetailWidget> {
                         ),
                         FFButtonWidget(
                           onPressed: () async {
+                            if (Navigator.of(context).canPop()) {
+                              context.pop();
+                            }
                             context.pushNamed(
-                              SelectPersonWidget.routeName,
+                              SelectDateWidget.routeName,
+                              queryParameters: {
+                                'serviceDocument': serializeParam(
+                                  widget.service,
+                                  ParamType.Document,
+                                ),
+                              }.withoutNulls,
                               extra: <String, dynamic>{
+                                'serviceDocument': widget.service,
                                 '__transition_info__': TransitionInfo(
                                   hasTransition: true,
                                   transitionType: PageTransitionType.fade,
